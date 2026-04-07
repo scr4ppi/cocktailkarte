@@ -1,416 +1,445 @@
-import React, { useState } from "react";
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roonburg Cocktailkarte</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-const cocktails = [
-  {
-    id: 1,
-    name: "Espresso Martini",
-    image: "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Vodka", "Kaffeelikör", "Espresso", "Zuckersirup"],
-    contents: ["koffeinhaltig", "alkoholhaltig"],
-    note: "Kräftig, leicht süß und mit intensivem Kaffeearoma.",
-  },
-  {
-    id: 2,
-    name: "Mojito",
-    image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Weißer Rum", "Limette", "Minze", "Rohrzucker", "Soda"],
-    contents: ["alkoholhaltig", "enthält Zitrusfrüchte"],
-    note: "Frisch, spritzig und eisgekühlt serviert.",
-  },
-  {
-    id: 3,
-    name: "Whiskey Sour",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Bourbon", "Zitronensaft", "Zuckersirup", "optional Eiweiß"],
-    contents: ["alkoholhaltig", "enthält Zitrusfrüchte", "optional Ei"],
-    note: "Klassisch, rund und angenehm süß-säuerlich.",
-  },
-  {
-    id: 4,
-    name: "Pornstar Martini",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Vanillevodka", "Passionsfrucht", "Limette", "Vanillesirup", "Sekt"],
-    contents: ["alkoholhaltig", "enthält Zitrusfrüchte", "sulfithaltig"],
-    note: "Fruchtig, cremig und ideal für den Signature-Look.",
-  },
-  {
-    id: 5,
-    name: "Moscow Mule",
-    image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Vodka", "Ginger Beer", "Limette", "Gurke"],
-    contents: ["alkoholhaltig", "enthält Zitrusfrüchte"],
-    note: "Frisch, würzig und mit leichtem Ginger-Kick.",
-  },
-  {
-    id: 6,
-    name: "Virgin Berry Smash",
-    image: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80",
-    ingredients: ["Beerenpüree", "Zitronensaft", "Minze", "Soda", "Sirup"],
-    contents: ["alkoholfrei", "enthält Zitrusfrüchte"],
-    note: "Fruchtige alkoholfreie Alternative mit kräftiger Farbe.",
-  },
-];
+        body {
+            min-height: 100vh;
+            background-color: #050505;
+            color: #ffffff;
+            font-family: Arial, Helvetica, sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-const styles = {
-  page: {
-    minHeight: "100vh",
-    backgroundColor: "#050505",
-    color: "#ffffff",
-    fontFamily: "Arial, Helvetica, sans-serif",
-    position: "relative",
-    overflow: "hidden",
-  },
-  background: {
-    position: "fixed",
-    inset: 0,
-    backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.82)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1800&q=80')",
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    filter: "saturate(0.9)",
-  },
-  glowOne: {
-    position: "fixed",
-    top: "-10%",
-    left: "-10%",
-    width: 500,
-    height: 500,
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(170,20,20,0.35), rgba(170,20,20,0))",
-    pointerEvents: "none",
-  },
-  glowTwo: {
-    position: "fixed",
-    bottom: "-20%",
-    right: "-10%",
-    width: 520,
-    height: 520,
-    borderRadius: "50%",
-    background: "radial-gradient(circle, rgba(120,0,30,0.28), rgba(120,0,30,0))",
-    pointerEvents: "none",
-  },
-  container: {
-    position: "relative",
-    zIndex: 1,
-    maxWidth: 1100,
-    margin: "0 auto",
-    padding: "32px 16px 48px",
-  },
-  hero: {
-    background: "rgba(0,0,0,0.48)",
-    border: "1px solid rgba(255,255,255,0.12)",
-    borderRadius: 32,
-    padding: "36px 20px",
-    textAlign: "center",
-    boxShadow: "0 24px 60px rgba(0,0,0,0.35)",
-    backdropFilter: "blur(10px)",
-  },
-  logoWrap: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 18,
-    flexWrap: "wrap",
-  },
-  logoIcon: {
-    width: 82,
-    height: 82,
-    borderRadius: "50%",
-    border: "5px solid white",
-    position: "relative",
-    flexShrink: 0,
-  },
-  logoBuilding: {
-    position: "absolute",
-    left: "50%",
-    top: "26%",
-    transform: "translateX(-50%)",
-    width: "40%",
-    height: "34%",
-    background: "white",
-    borderTopLeftRadius: 4,
-    borderTopRightRadius: 4,
-  },
-  logoLine: {
-    position: "absolute",
-    left: "-5%",
-    bottom: "18%",
-    width: "110%",
-    height: 5,
-    background: "white",
-    borderRadius: 999,
-    transform: "rotate(-8deg)",
-  },
-  logoTower: {
-    position: "absolute",
-    left: "37%",
-    top: "14%",
-    width: "5%",
-    height: "16%",
-    background: "white",
-    borderRadius: 999,
-  },
-  logoTop: {
-    position: "absolute",
-    left: "41%",
-    top: "13%",
-    width: "11%",
-    height: "4%",
-    background: "white",
-    borderRadius: 999,
-  },
-  logoWindowA: {
-    position: "absolute",
-    left: "31%",
-    top: "31%",
-    width: "7%",
-    height: "7%",
-    background: "#050505",
-    borderRadius: 2,
-  },
-  logoWindowB: {
-    position: "absolute",
-    left: "41%",
-    top: "31%",
-    width: "7%",
-    height: "7%",
-    background: "#050505",
-    borderRadius: 2,
-  },
-  logoWindowC: {
-    position: "absolute",
-    left: "51%",
-    top: "31%",
-    width: "7%",
-    height: "7%",
-    background: "#050505",
-    borderRadius: 2,
-  },
-  logoText: {
-    fontSize: "clamp(44px, 8vw, 100px)",
-    fontWeight: 900,
-    letterSpacing: "-0.04em",
-    lineHeight: 0.95,
-    textTransform: "uppercase",
-    fontFamily: "Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif",
-  },
-  kicker: {
-    marginTop: 24,
-    color: "#ff3333",
-    fontSize: 13,
-    fontWeight: 700,
-    textTransform: "uppercase",
-    letterSpacing: "0.35em",
-  },
-  heading: {
-    margin: "16px 0 10px",
-    fontSize: "clamp(34px, 5vw, 72px)",
-    fontWeight: 900,
-    lineHeight: 1,
-    textTransform: "uppercase",
-  },
-  intro: {
-    maxWidth: 760,
-    margin: "0 auto",
-    color: "rgba(255,255,255,0.74)",
-    fontSize: 16,
-    lineHeight: 1.6,
-  },
-  list: {
-    marginTop: 28,
-    display: "grid",
-    gap: 16,
-  },
-  card: {
-    background: "rgba(0,0,0,0.50)",
-    border: "1px solid rgba(255,255,255,0.10)",
-    borderRadius: 26,
-    overflow: "hidden",
-    backdropFilter: "blur(8px)",
-    boxShadow: "0 12px 40px rgba(0,0,0,0.25)",
-  },
-  cardButton: {
-    width: "100%",
-    background: "transparent",
-    border: 0,
-    color: "white",
-    padding: 16,
-    cursor: "pointer",
-    display: "flex",
-    alignItems: "center",
-    gap: 16,
-    textAlign: "left",
-  },
-  thumb: {
-    width: 88,
-    height: 88,
-    objectFit: "cover",
-    borderRadius: 18,
-    flexShrink: 0,
-    background: "#151515",
-  },
-  cardBody: {
-    flex: 1,
-    minWidth: 0,
-  },
-  cardTitleRow: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    gap: 12,
-    flexWrap: "wrap",
-  },
-  cardTitle: {
-    margin: 0,
-    fontSize: 24,
-    fontWeight: 800,
-  },
-  arrow: {
-    fontSize: 28,
-    color: "rgba(255,255,255,0.7)",
-    flexShrink: 0,
-    lineHeight: 1,
-  },
-  cardText: {
-    margin: "8px 0 0",
-    color: "rgba(255,255,255,0.72)",
-    fontSize: 15,
-    lineHeight: 1.5,
-  },
-  dropdown: {
-    borderTop: "1px solid rgba(255,255,255,0.10)",
-    padding: 18,
-    display: "grid",
-    gap: 18,
-  },
-  sectionTitle: {
-    margin: "0 0 8px",
-    color: "#ff3a3a",
-    fontSize: 12,
-    fontWeight: 800,
-    textTransform: "uppercase",
-    letterSpacing: "0.2em",
-  },
-  listItem: {
-    color: "rgba(255,255,255,0.88)",
-    marginBottom: 6,
-    lineHeight: 1.5,
-  },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
-    gap: 8,
-  },
-  chip: {
-    padding: "8px 12px",
-    borderRadius: 999,
-    background: "rgba(255,255,255,0.06)",
-    border: "1px solid rgba(255,255,255,0.10)",
-    color: "rgba(255,255,255,0.86)",
-    fontSize: 13,
-  },
-  footer: {
-    marginTop: 28,
-    textAlign: "center",
-    color: "rgba(255,255,255,0.35)",
-    fontSize: 12,
-    textTransform: "uppercase",
-    letterSpacing: "0.2em",
-  },
-};
+        .background {
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(0,0,0,0.68), rgba(0,0,0,0.82)), url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1800&q=80');
+            background-size: cover;
+            background-position: center;
+            filter: saturate(0.9);
+            z-index: 0;
+        }
 
-function Logo() {
-  return (
-    <div style={styles.logoWrap}>
-      <div style={styles.logoIcon}>
-        <div style={styles.logoBuilding} />
-        <div style={styles.logoTower} />
-        <div style={styles.logoTop} />
-        <div style={styles.logoWindowA} />
-        <div style={styles.logoWindowB} />
-        <div style={styles.logoWindowC} />
-        <div style={styles.logoLine} />
-      </div>
-      <div style={styles.logoText}>ROONBURG</div>
-    </div>
-  );
-}
+        .glow-one {
+            position: fixed;
+            top: -10%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(170,20,20,0.35), rgba(170,20,20,0));
+            pointer-events: none;
+            z-index: 0;
+        }
 
-function CocktailCard({ cocktail, isOpen, onToggle }) {
-  return (
-    <div style={styles.card}>
-      <button style={styles.cardButton} onClick={onToggle}>
-        <img src={cocktail.image} alt={cocktail.name} style={styles.thumb} />
+        .glow-two {
+            position: fixed;
+            bottom: -20%;
+            right: -10%;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(120,0,30,0.28), rgba(120,0,30,0));
+            pointer-events: none;
+            z-index: 0;
+        }
 
-        <div style={styles.cardBody}>
-          <div style={styles.cardTitleRow}>
-            <h3 style={styles.cardTitle}>{cocktail.name}</h3>
-          </div>
-          <p style={styles.cardText}>{cocktail.note}</p>
-        </div>
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 32px 16px 48px;
+        }
 
-        <div style={{ ...styles.arrow, transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.2s ease" }}>
-          ▾
-        </div>
-      </button>
+        .hero {
+            background: rgba(0,0,0,0.48);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 32px;
+            padding: 36px 20px;
+            text-align: center;
+            box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+            backdrop-filter: blur(10px);
+        }
 
-      {isOpen && (
-        <div style={styles.dropdown}>
-          <div>
-            <p style={styles.sectionTitle}>Zutaten</p>
-            <ul style={{ margin: 0, paddingLeft: 18 }}>
-              {cocktail.ingredients.map((item) => (
-                <li key={item} style={styles.listItem}>{item}</li>
-              ))}
-            </ul>
-          </div>
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
 
-          <div>
-            <p style={styles.sectionTitle}>Inhaltsstoffe</p>
-            <div style={styles.chips}>
-              {cocktail.contents.map((item) => (
-                <span key={item} style={styles.chip}>{item}</span>
-              ))}
+        .logo-icon {
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            border: 5px solid white;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .logo-building {
+            position: absolute;
+            left: 50%;
+            top: 26%;
+            transform: translateX(-50%);
+            width: 40%;
+            height: 34%;
+            background: white;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+
+        .logo-line {
+            position: absolute;
+            left: -5%;
+            bottom: 18%;
+            width: 110%;
+            height: 5px;
+            background: white;
+            border-radius: 999px;
+            transform: rotate(-8deg);
+        }
+
+        .logo-tower {
+            position: absolute;
+            left: 37%;
+            top: 14%;
+            width: 5%;
+            height: 16%;
+            background: white;
+            border-radius: 999px;
+        }
+
+        .logo-top {
+            position: absolute;
+            left: 41%;
+            top: 13%;
+            width: 11%;
+            height: 4%;
+            background: white;
+            border-radius: 999px;
+        }
+
+        .logo-window {
+            position: absolute;
+            top: 31%;
+            width: 7%;
+            height: 7%;
+            background: #050505;
+            border-radius: 2px;
+        }
+
+        .logo-window-a { left: 31%; }
+        .logo-window-b { left: 41%; }
+        .logo-window-c { left: 51%; }
+
+        .logo-text {
+            font-size: clamp(44px, 8vw, 100px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.95;
+            text-transform: uppercase;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        }
+
+        .kicker {
+            margin-top: 24px;
+            color: #ff3333;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.35em;
+        }
+
+        h1 {
+            margin: 16px 0 10px;
+            font-size: clamp(34px, 5vw, 72px);
+            font-weight: 900;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .intro {
+            max-width: 760px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.74);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .list {
+            margin-top: 28px;
+            display: grid;
+            gap: 16px;
+        }
+
+        .card {
+            background: rgba(0,0,0,0.50);
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 26px;
+            overflow: hidden;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+        }
+
+        .card-button {
+            width: 100%;
+            background: transparent;
+            border: 0;
+            color: white;
+            padding: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        .card-button:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .thumb {
+            width: 88px;
+            height: 88px;
+            object-fit: cover;
+            border-radius: 18px;
+            flex-shrink: 0;
+            background: #151515;
+        }
+
+        .card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .card-title-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .card-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .arrow {
+            font-size: 28px;
+            color: rgba(255,255,255,0.7);
+            flex-shrink: 0;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .arrow.open {
+            transform: rotate(180deg);
+        }
+
+        .card-text {
+            margin: 8px 0 0;
+            color: rgba(255,255,255,0.72);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .dropdown {
+            border-top: 1px solid rgba(255,255,255,0.10);
+            padding: 18px;
+            display: grid;
+            gap: 18px;
+            display: none;
+        }
+
+        .dropdown.open {
+            display: grid;
+        }
+
+        .section-title {
+            margin: 0 0 8px;
+            color: #ff3a3a;
+            font-size: 12px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+
+        .list-item {
+            color: rgba(255,255,255,0.88);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.10);
+            color: rgba(255,255,255,0.86);
+            font-size: 13px;
+        }
+
+        footer {
+            margin-top: 28px;
+            text-align: center;
+            color: rgba(255,255,255,0.35);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="glow-one"></div>
+    <div class="glow-two"></div>
+
+    <div class="container">
+        <section class="hero">
+            <div class="logo-wrap">
+                <div class="logo-icon">
+                    <div class="logo-building"></div>
+                    <div class="logo-tower"></div>
+                    <div class="logo-top"></div>
+                    <div class="logo-window logo-window-a"></div>
+                    <div class="logo-window logo-window-b"></div>
+                    <div class="logo-window logo-window-c"></div>
+                    <div class="logo-line"></div>
+                </div>
+                <div class="logo-text">ROONBURG</div>
             </div>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function RoonburgCocktailkarte() {
-  const [openId, setOpenId] = useState(1);
-
-  return (
-    <div style={styles.page}>
-      <div style={styles.background} />
-      <div style={styles.glowOne} />
-      <div style={styles.glowTwo} />
-
-      <div style={styles.container}>
-        <section style={styles.hero}>
-          <Logo />
-          <div style={styles.kicker}>Cocktailkarte</div>
-          <h1 style={styles.heading}>Deine Drinks für lange Nächte</h1>
-          <p style={styles.intro}>
-            Eigenständige Cocktailkarte im dunklen Club-Look. Ohne Menü, ohne Navigation und mit aufklappbaren Details für Zutaten und Inhaltsstoffe.
-          </p>
+            <div class="kicker">Cocktailkarte</div>
+            <h1>Deine Drinks für lange Nächte</h1>
+            <p class="intro">
+                Eigenständige Cocktailkarte im dunklen Club-Look. Ohne Menü, ohne Navigation und mit aufklappbaren Details für Zutaten und Inhaltsstoffe.
+            </p>
         </section>
 
-        <section style={styles.list}>
-          {cocktails.map((cocktail) => (
-            <CocktailCard
-              key={cocktail.id}
-              cocktail={cocktail}
-              isOpen={openId === cocktail.id}
-              onToggle={() => setOpenId(openId === cocktail.id ? null : cocktail.id)}
-            />
-          ))}
-        </section>
+        <section class="list" id="cocktail-list"></section>
 
-        <footer style={styles.footer}>Platzhalterbilder und Inhalte können direkt ersetzt werden</footer>
-      </div>
+        <footer>Platzhalterbilder und Inhalte können direkt ersetzt werden</footer>
     </div>
-  );
-}
+
+    <script>
+        const cocktails = [
+            {
+                id: 1,
+                name: "Espresso Martini",
+                image: "https://images.unsplash.com/photo-1575023782549-62ca0d244b39?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Vodka", "Kaffeelikör", "Espresso", "Zuckersirup"],
+                contents: ["koffeinhaltig", "alkoholhaltig"],
+                note: "Kräftig, leicht süß und mit intensivem Kaffeearoma.",
+            },
+            {
+                id: 2,
+                name: "Mojito",
+                image: "https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Weißer Rum", "Limette", "Minze", "Rohrzucker", "Soda"],
+                contents: ["alkoholhaltig", "enthält Zitrusfrüchte"],
+                note: "Frisch, spritzig und eisgekühlt serviert.",
+            },
+            {
+                id: 3,
+                name: "Whiskey Sour",
+                image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Bourbon", "Zitronensaft", "Zuckersirup", "optional Eiweiß"],
+                contents: ["alkoholhaltig", "enthält Zitrusfrüchte", "optional Ei"],
+                note: "Klassisch, rund und angenehm süß-säuerlich.",
+            },
+            {
+                id: 4,
+                name: "Pornstar Martini",
+                image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Vanillevodka", "Passionsfrucht", "Limette", "Vanillesirup", "Sekt"],
+                contents: ["alkoholhaltig", "enthält Zitrusfrüchte", "sulfithaltig"],
+                note: "Fruchtig, cremig und ideal für den Signature-Look.",
+            },
+            {
+                id: 5,
+                name: "Moscow Mule",
+                image: "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Vodka", "Ginger Beer", "Limette", "Gurke"],
+                contents: ["alkoholhaltig", "enthält Zitrusfrüchte"],
+                note: "Frisch, würzig und mit leichtem Ginger-Kick.",
+            },
+            {
+                id: 6,
+                name: "Virgin Berry Smash",
+                image: "https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80",
+                ingredients: ["Beerenpüree", "Zitronensaft", "Minze", "Soda", "Sirup"],
+                contents: ["alkoholfrei", "enthält Zitrusfrüchte"],
+                note: "Fruchtige alkoholfreie Alternative mit kräftiger Farbe.",
+            },
+        ];
+
+        let openId = 1;
+
+        function renderCocktails() {
+            const list = document.getElementById('cocktail-list');
+            list.innerHTML = cocktails.map(cocktail => `
+                <div class="card">
+                    <button class="card-button" onclick="toggleCard(${cocktail.id})">
+                        <img src="${cocktail.image}" alt="${cocktail.name}" class="thumb" />
+                        <div class="card-body">
+                            <div class="card-title-row">
+                                <h3 class="card-title">${cocktail.name}</h3>
+                            </div>
+                            <p class="card-text">${cocktail.note}</p>
+                        </div>
+                        <div class="arrow ${openId === cocktail.id ? 'open' : ''}">▾</div>
+                    </button>
+                    <div class="dropdown ${openId === cocktail.id ? 'open' : ''}">
+                        <div>
+                            <p class="section-title">Zutaten</p>
+                            <ul>
+                                ${cocktail.ingredients.map(item => `<li class="list-item">${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="section-title">Inhaltsstoffe</p>
+                            <div class="chips">
+                                ${cocktail.contents.map(item => `<span class="chip">${item}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCard(id) {
+            openId = openId === id ? null : id;
+            renderCocktails();
+        }
+
+        renderCocktails();
+    </script>
+</body>
+</html>
