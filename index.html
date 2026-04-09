@@ -3,64 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cocktailkarte</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Cocktail Menu</title>
 </head>
 <body>
-    <h1>Cocktailkarte</h1>
-    <div class="categories">
-        <button class="category-btn" data-category="all">Alle</button>
-        <button class="category-btn" data-category="klassisch">Klassisch</button>
-        <button class="category-btn" data-category="fruchtig">Fruchtig</button>
-        <button class="category-btn" data-category="alkoholfrei">Alkoholfrei</button>
+    <h1>Cocktail Menu</h1>
+    <div class="filter">
+        <label for="categories">Categories:</label>
+        <select id="categories">
+            <option value="all">Alle</option>
+            <option value="classic">Klassisch</option>
+            <option value="fruity">Fruchtig</option>
+            <option value="non-alcoholic">Alkoholfrei</option>
+        </select>
     </div>
     <div class="cocktails">
-        <div class="cocktail" data-category="klassisch">
+        <div class="cocktail" data-category="classic" data-alcoholic="true" data-price="8">
             <h2>Mojito</h2>
-            <p>⭐⭐⭐⭐⭐ (Alkohol: 5, Fruchtig: 2)</p>
-            <p>Preis: 8.00€</p>
-            <button class="expand-btn">Details</button>
-            <div class="details">
-                <p>Ein klassischer Mojito mit frischer Minze und Limette.</p>
-            </div>
+            <p>Refreshing mint cocktail</p>
+            <span class="stars" data-rating="5">★★★★★</span>
         </div>
-        <div class="cocktail" data-category="fruchtig">
+        <div class="cocktail" data-category="classic" data-alcoholic="true" data-price="7">
+            <h2>Martini</h2>
+            <p>Classic gin cocktail</p>
+            <span class="stars" data-rating="4">★★★★☆</span>
+        </div>
+        <div class="cocktail" data-category="fruity" data-alcoholic="true" data-price="9">
             <h2>Pina Colada</h2>
-            <p>⭐⭐⭐⭐ (Alkohol: 3, Fruchtig: 5)</p>
-            <p>Preis: 9.00€</p>
-            <button class="expand-btn">Details</button>
-            <div class="details">
-                <p>Eine cremige Pina Colada mit Ananas und Kokosnuss.</p>
-            </div>
+            <p>Sweet tropical cocktail</p>
+            <span class="stars" data-rating="5">★★★★★</span>
         </div>
-        <div class="cocktail" data-category="alkoholfrei">
-            <h2>Virgin Mojito</h2>
-            <p>⭐⭐⭐⭐ (Alkohol: 1, Fruchtig: 4)</p>
-            <p>Preis: 6.00€</p>
-            <button class="expand-btn">Details</button>
-            <div class="details">
-                <p>Eine alkoholfreie Version des Mojitos </p>
-            </div>
+        <div class="cocktail" data-category="fruity" data-alcoholic="false" data-price="6">
+            <h2>Virgin Piña Colada</h2>
+            <p>Fruity non-alcoholic drink</p>
+            <span class="stars" data-rating="3">★★★☆☆</span>
         </div>
-        <!-- Add more cocktails as needed -->
+        <div class="cocktail" data-category="classic" data-alcoholic="true" data-price="10">
+            <h2>Old Fashioned</h2>
+            <p>Strong whiskey cocktail</p>
+            <span class="stars" data-rating="5">★★★★★</span>
+        </div>
+        <div class="cocktail" data-category="non-alcoholic" data-alcoholic="false" data-price="5">
+            <h2>Shirley Temple</h2>
+            <p>Sweet non-alcoholic drink</p>
+            <span class="stars" data-rating="4">★★★★☆</span>
+        </div>
     </div>
-    <script>
-        document.querySelectorAll('.expand-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const details = button.nextElementSibling;
-                details.style.display = details.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-
-        document.querySelectorAll('.category-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                const category = button.getAttribute('data-category');
-                document.querySelectorAll('.cocktail').forEach(cocktail => {
-                    cocktail.style.display = category === 'all' || cocktail.getAttribute('data-category') === category ? 'block' : 'none';
-                });
-            });
-        });
-    </script>
 </body>
 </html>
