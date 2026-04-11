@@ -52,6 +52,64 @@
       padding: 32px 16px 48px;
     }
 
+    .card.happy-hour,
+.card.cocktail-abend {
+  position: relative;
+}
+
+.card.happy-hour {
+  border-color: rgba(255, 180, 0, 0.95);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 180, 0, 0.40),
+    0 0 24px rgba(255, 180, 0, 0.18);
+}
+
+.card.cocktail-abend {
+  border-color: rgba(255, 51, 51, 0.95);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 51, 51, 0.40),
+    0 0 28px rgba(255, 51, 51, 0.18);
+}
+
+.card.happy-hour::before,
+.card.cocktail-abend::before {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.card.happy-hour::before {
+  content: "Happy Hour";
+  background: linear-gradient(135deg, #ffb000, #ff7a00);
+}
+
+.card.cocktail-abend::before {
+  content: "Cocktail des Abends";
+  background: linear-gradient(135deg, #ff3333, #a8002a);
+}
+
+@media (max-width: 720px) {
+  .card.happy-hour::before,
+  .card.cocktail-abend::before {
+    top: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 7px 10px;
+  }
+}
+    
     .hero {
       background: rgba(0, 0, 0, 0.48);
       border: 1px solid rgba(255, 255, 255, 0.12);
@@ -411,7 +469,7 @@
       <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
       <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
       <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
-      <button class="category-btn" data-category="HAppy Hour">Happy Hour/ C. d. Tages</button>
+      <button class="category-btn" data-category="Happy-Hour">Happy Hour/ C. d. Tages</button>
       <button class="category-btn" data-category="Seasonal">Seasonal</button>
     </nav>
 
@@ -588,7 +646,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display happy-hour" data-category="FRESH-ZESTY happy-hour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://images.unsplash.com/photo-1563223771-375783ee91ad?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Z3IlQzMlQkNuZXIlMjBjb2NrdGFpbHxlbnwwfHwwfHx8MA%3D%3D" alt="Melon Sour" />
           <div class="card-body">
@@ -645,7 +703,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display cocktail-abend" data-category="FRESH-ZESTY Happy-Hour">
         <button class="card-toggle" type="button">
         <img class="card-image" src="https://www.honest-rare.de/images/blog/11/gin-fizz-rezept.jpeg" alt="Gin Fizz" />          <div class="card-body">
             <h3 class="card-title">Gin Fizz</h3>
@@ -1149,7 +1207,7 @@
         </div>
       </article>
 
-                                  <article class="card active-display" data-category="VACAY-VIBES">
+                                  <article class="card active-display happy-hour" data-category="VACAY-VIBES Happy-Hour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://drimaco.com/_next/image?url=%2Fimages%2Fcocktails%2Fbahama-mama.webp&w=1024&q=75" alt="Bahama Mama" />
           <div class="card-body">
@@ -1497,7 +1555,7 @@
         </div>
       </article>
 
-       <article class="card active-display" data-category="PARTY-FAVORITES">
+       <article class="card active-display happy-hour" data-category="PARTY-FAVORITES Happy-Hour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://img.ccnull.de/1090000/preview/1091292_dffb99a361ec13449c4213b49199d010.jpg" alt="Cuba Libre" />
           <div class="card-body">
