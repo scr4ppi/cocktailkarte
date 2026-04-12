@@ -105,8 +105,13 @@
 
 /* Regenbogen Rahmen mit runden Ecken */
 .btn-happy-hour {
-  background: white; /* Hintergrundfarbe des Buttons innen */
-  color: #333;
+  background: white !important; /* Hintergrund des Buttons */
+  color: #000000 !important;    /* Schriftfarbe auf SCHWARZ gesetzt */
+  font-weight: bold;            /* Optional: Fett, damit man es besser liest */
+  border-radius: 20px;
+  position: relative;
+  border: 2px solid transparent !important;
+  z-index: 1;                   /* Stellt sicher, dass die Schrift über dem Rand liegt */
 }
 
 /* Der Regenbogen-Effekt als Pseudo-Element dahinter */
