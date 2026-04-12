@@ -89,7 +89,36 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
   pointer-events: none;
 }
+/* Gemeinsame Basis für beide Buttons (Rundung sicherstellen) */
+.btn-seasonal, .btn-happy-hour {
+  border-radius: 20px; /* Hier deine gewünschte Rundung einstellen */
+  background-clip: padding-box; 
+  position: relative;
+  border: 2px solid transparent !important;
+}
 
+/* Grüner Rahmen (einfach) */
+.btn-seasonal {
+  border-color: #2ecc71 !important;
+  color: #2ecc71;
+}
+
+/* Regenbogen Rahmen mit runden Ecken */
+.btn-happy-hour {
+  background: white; /* Hintergrundfarbe des Buttons innen */
+  color: #333;
+}
+
+/* Der Regenbogen-Effekt als Pseudo-Element dahinter */
+.btn-happy-hour::before {
+  content: '';
+  position: absolute;
+  top: -2px; bottom: -2px; left: -2px; right: -2px;
+  background: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  z-index: -1;
+  border-radius: 22px; /* Etwas mehr als der Button selbst */
+
+}
 .card.happy-hour::before {
   content: "Happy Hour";
   background: linear-gradient(135deg, #ffb000, #ff7a00);
@@ -460,19 +489,23 @@
       </p>
     </section>
 
-    <!-- Kategorien Navigation -->
-    <nav class="category-nav">
-      <button class="category-btn active" data-category="all">Alle</button>
-     <button class="category-btn" data-category="PARTY-FAVORITES">PARTY FAVORITES</button>
-      <button class="category-btn" data-category="VACAY-VIBES">VACAY VIBES</button>
-      <button class="category-btn" data-category="FRESH-ZESTY">FRESH & ZESTY</button>    
-      <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
-      <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
-      <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
-      <button class="category-btn" data-category="Happy-Hour">Happy Hour/ C. d. Tages</button>
-      <button class="category-btn" data-category="Seasonal">Seasonal</button>
-    </nav>
-
+  <nav class="category-nav">
+  <button class="category-btn active" data-category="all">Alle</button>
+  <button class="category-btn" data-category="PARTY-FAVORITES">PARTY FAVORITES</button>
+  <button class="category-btn" data-category="VACAY-VIBES">VACAY VIBES</button>
+  <button class="category-btn" data-category="FRESH-ZESTY">FRESH & ZESTY</button>    
+  <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
+  <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
+  <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
+  
+  <!-- Happy Hour Knopf mit Regenbogen -->
+  <button id="special-button" class="category-btn btn-happy-hour" data-category="Happy-Hour" style="display: none;">
+  Happy Hour/ C. d. Tages
+</button>
+  
+  <!-- Seasonal mit rundem grünen Rand -->
+  <button class="category-btn btn-seasonal" data-category="Seasonal">Seasonal</button>
+</nav>
     <section class="list">
       <article class="card active-display" data-category="FRESH-ZESTY">
         <button class="card-toggle" type="button">
@@ -2200,6 +2233,31 @@
 
     <footer class="footer">Sprecht uns gerne bei Fragen oder Anregungen an, wir versuchen auf Wünsche einzugehen</footer>
   </main>
+
+
+  <script>
+  function checkSpecialButtonVisibility() {
+    // Ändere dies auf 'false', wenn die Automatik live gehen soll!
+    const TEST_MODE = true; 
+
+    const now = new Date();
+    const day = now.getDay();   // 0 = Sonntag, 6 = Samstag
+    const hour = now.getHours();
+    const button = document.getElementById('special-button');
+
+    // Prüfe die Zeit-Logik
+    let isVisible = (day === 6 && hour >= 10) || (day === 0 && hour < 12);
+
+    // Wenn der Test-Modus aktiv ist, überschreiben wir das Ergebnis
+    if (TEST_MODE || isVisible) {
+      button.style.display = 'inline-block';
+    } else {
+      button.style.display = 'none';
+    }
+  }
+
+  window.onload = checkSpecialButtonVisibility;
+</script>
 
   <script>
   // Karten-Akkordeon (Öffnen/Schließen)
