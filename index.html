@@ -3,47 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
   <title>Roonburg Cocktailkarte</title>
-  <style>
-
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="page">
- 
-      
-    <div class="logo-mark">
-        <img src="https://roonburg.de/media/default/assets/config/roonburg/images/roonburg-logo.png" alt="Roonburg Logo">
-    </div>
-
-</div>
+    <section class="hero">
+      <div class="logo-wrap">
+        <div class="logo-mark">
+          <img src="https://roonburg.de/media/default/assets/config/roonburg/images/roonburg-logo.png" alt="Roonburg Logo">
+        </div>
       </div>
 
       <div class="kicker">Cocktailkarte</div>
       <h1 class="heading">Deine Drinks für lange Nächte</h1>
       <p class="intro">
-        Zeit für einen Drink: Scrolle durch unsere Karte und finde deinen persönlichen Favoriten für heute Abend. Von fruchtig-frisch bis herb-intensiv ist für jeden Geschmack das passende Glas dabei.
+        Zeit für einen Drink: Scrolle durch unsere Karte und finde deinen persönlichen Favoriten für heute Abend.
+        Von fruchtig-frisch bis herb-intensiv ist für jeden Geschmack das passende Glas dabei.
       </p>
     </section>
 
-  <nav class="category-nav">
-  <button class="category-btn active" data-category="all">Alle</button>
-  <button class="category-btn" data-category="PARTY-FAVORITES">PARTY FAVORITES</button>
-  <button class="category-btn" data-category="VACAY-VIBES">VACAY VIBES</button>
-  <button class="category-btn" data-category="FRESH-ZESTY">FRESH & ZESTY</button>    
-  <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
-  <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
-  <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
-  
-  <!-- Happy Hour Knopf mit Regenbogen -->
-  <button id="special-button" class="category-btn btn-happy-hour" data-category="Happy-Hour" style="display: none;">
-  Happy Hour/ C. d. Tages
-</button>
-  
-  <!-- Seasonal mit rundem grünen Rand -->
-  <button class="category-btn btn-seasonal" data-category="Seasonal">Seasonal</button>
-</nav>
+    <nav class="category-nav">
+      <button class="category-btn active" data-category="all">Alle</button>
+      <button class="category-btn" data-category="PARTY-FAVORITES">PARTY FAVORITES</button>
+      <button class="category-btn" data-category="VACAY-VIBES">VACAY VIBES</button>
+      <button class="category-btn" data-category="FRESH-ZESTY">FRESH &amp; ZESTY</button>
+      <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
+      <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
+      <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
+      <button id="special-button" class="category-btn btn-happy-hour" data-category="Happy-Hour" style="display: none;">
+        Happy Hour/ C. d. Tages
+      </button>
+      <button class="category-btn btn-seasonal" data-category="Seasonal">Seasonal</button>
+    </nav>
+
     <section class="list">
       <article class="card active-display" data-category="FRESH-ZESTY">
         <button class="card-toggle" type="button">
@@ -60,17 +53,16 @@
             <ul class="ingredients">
               <li>Whiskey</li>
               <li>Zitronensaft</li>
-              <li>Eiweis</li>
+              <li>Eiweiß</li>
               <li>Zuckersirup</li>
             </ul>
           </div>
           <div>
             <p class="section-title">Inhaltsstoffe</p>
             <div class="chips">
-             
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-              <span class="chip">enthält Ei </span>
+              <span class="chip">enthält Ei</span>
             </div>
           </div>
           <div class="card-meta">
@@ -104,10 +96,10 @@
 
       <article class="card active-display" data-category="FRESH-ZESTY">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.pexels.com/photos/27580842/pexels-photo-27580842.jpeg" alt="Mojito" />
+          <img class="card-image" src="https://images.pexels.com/photos/27580842/pexels-photo-27580842.jpeg" alt="New York Sour - Twist" />
           <div class="card-body">
             <h3 class="card-title">New York Sour - Twist</h3>
-            <p class="card-note">Der Klassiker mit Twist. Rotweinlikör für die geschmackliche Besonderheit. </p>
+            <p class="card-note">Der Klassiker mit Twist. Rotweinlikör für die geschmackliche Besonderheit.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -119,7 +111,7 @@
               <li>Zitrone</li>
               <li>Zucker</li>
               <li>Rotweinapperitif</li>
-              <li>Optional ohne Eiweis</li>
+              <li>Optional ohne Eiweiß</li>
             </ul>
           </div>
           <div>
@@ -127,8 +119,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-              <span class="chip">enthält Ei </span>
-           
+              <span class="chip">enthält Ei</span>
             </div>
           </div>
           <div class="card-meta">
@@ -152,7 +143,7 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
                 <span class="star">★</span>
               </div>
             </div>
@@ -162,10 +153,10 @@
 
       <article class="card active-display" data-category="FRESH-ZESTY">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://plus.unsplash.com/premium_photo-1661346164645-df6222a57457?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pisco SOur" />
+          <img class="card-image" src="https://plus.unsplash.com/premium_photo-1661346164645-df6222a57457?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Pisco Sour" />
           <div class="card-body">
             <h3 class="card-title">Pisco Sour</h3>
-            <p class="card-note">Lateinamerikanisches Lebensgefühl. Cremig, frisch mit samitger schaumkrone.</p>
+            <p class="card-note">Lateinamerikanisches Lebensgefühl. Cremig, frisch mit samtiger Schaumkrone.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -185,7 +176,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-              <span class="chip">enthält Ei </span>
+              <span class="chip">enthält Ei</span>
             </div>
           </div>
           <div class="card-meta">
@@ -267,7 +258,7 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
@@ -276,7 +267,8 @@
 
       <article class="card active-display" data-category="FRESH-ZESTY">
         <button class="card-toggle" type="button">
-        <img class="card-image" src="https://www.honest-rare.de/images/blog/11/gin-fizz-rezept.jpeg" alt="Gin Fizz" />          <div class="card-body">
+          <img class="card-image" src="https://www.honest-rare.de/images/blog/11/gin-fizz-rezept.jpeg" alt="Gin Fizz" />
+          <div class="card-body">
             <h3 class="card-title">Gin Fizz</h3>
             <p class="card-note">Leicht, prickelnd und extrem erfrischend. Wie eine Limonade für Erwachsene.</p>
           </div>
@@ -330,10 +322,10 @@
 
       <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" alt="Virgin Berry Smash" />
+          <img class="card-image" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" alt="Mai Tai" />
           <div class="card-body">
             <h3 class="card-title">Mai Tai</h3>
-            <p class="card-note">Kurzurlaub mit Wumms. Kräftiger Rum trifft auf Limette und Mandel. Schmeckt nach Strandbar und lässt die Hula-Kette von alleine tanzen</p>
+            <p class="card-note">Kurzurlaub mit Wumms. Kräftiger Rum trifft auf Limette und Mandel. Schmeckt nach Strandbar und lässt die Hula-Kette von alleine tanzen.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -345,7 +337,6 @@
               <li>Limejuice</li>
               <li>Mandelsirup</li>
               <li>Ananassaft</li>
-             
             </ul>
           </div>
           <div>
@@ -376,20 +367,20 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
- 
-          <article class="card active-display" data-category="VACAY-VIBES">
+
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
-        <img class="card-image" src="https://www.gourmet-magazin.de/fileadmin/_processed_/e/f/csm_zombie-1_b2536db7ab.jpg" alt="Zombie" />         
+          <img class="card-image" src="https://www.gourmet-magazin.de/fileadmin/_processed_/e/f/csm_zombie-1_b2536db7ab.jpg" alt="Zombie" />
           <div class="card-body">
             <h3 class="card-title">Zombie</h3>
-            <p class="card-note">Ein hochprozentiges Tropen-Gewitter aus drei Sorten Rum und Ananas</p>
+            <p class="card-note">Ein hochprozentiges Tropen-Gewitter aus drei Sorten Rum und Ananas.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -401,14 +392,13 @@
               <li>Zitronensaft</li>
               <li>Orangensaft</li>
               <li>Ananassaft</li>
-             
             </ul>
           </div>
           <div>
             <p class="section-title">Inhaltsstoffe</p>
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
-              <span class="chip">Saürungsmittel</span>
+              <span class="chip">Säurungsmittel</span>
               <span class="chip">Farbstoff</span>
             </div>
           </div>
@@ -446,7 +436,7 @@
           <img class="card-image" src="https://images.pexels.com/photos/1304540/pexels-photo-1304540.jpeg" alt="Negroni" />
           <div class="card-body">
             <h3 class="card-title">Negroni</h3>
-            <p class="card-note">Flüssiges Charisma. Bitter, süß und so stark, dass du plötzlich fließend italienisch sprichst. Ein Drink für Kenner mit Kante. </p>
+            <p class="card-note">Flüssiges Charisma. Bitter, süß und so stark, dass du plötzlich fließend italienisch sprichst. Ein Drink für Kenner mit Kante.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -457,7 +447,6 @@
               <li>Gin</li>
               <li>Campari</li>
               <li>Wermut</li>
-           
             </ul>
           </div>
           <div>
@@ -465,7 +454,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Sulfite</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -487,9 +476,9 @@
               <span class="meta-label">Fruchtig</span>
               <div class="stars">
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
                 <span class="star">★</span>
               </div>
             </div>
@@ -497,12 +486,12 @@
         </div>
       </article>
 
-       <article class="card active-display" data-category="SPIRIT-FORWARD">
+      <article class="card active-display" data-category="SPIRIT-FORWARD">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://tlapazola.com/wp-content/uploads/2020/02/Category-Product-Item_glassware.jpg" alt="Martini" />
           <div class="card-body">
             <h3 class="card-title">Martini</h3>
-            <p class="card-note">James Bond Vibes. trocken, Eiskalt, klar und sehr stark. </p>
+            <p class="card-note">James Bond Vibes. Trocken, eiskalt, klar und sehr stark.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -512,7 +501,6 @@
             <ul class="ingredients">
               <li>Gin</li>
               <li>Wermut</li>
-           
             </ul>
           </div>
           <div>
@@ -551,13 +539,12 @@
         </div>
       </article>
 
-
-        <article class="card active-display" data-category="SPIRIT-FORWARD">
+      <article class="card active-display" data-category="SPIRIT-FORWARD">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://images.pexels.com/photos/1304540/pexels-photo-1304540.jpeg" alt="Boulevardier" />
           <div class="card-body">
             <h3 class="card-title">Boulevardier</h3>
-            <p class="card-note">Der Negroni für Whisky-Fans. Die dunkle, verführerische Seite des Klassikers. </p>
+            <p class="card-note">Der Negroni für Whisky-Fans. Die dunkle, verführerische Seite des Klassikers.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -568,7 +555,6 @@
               <li>Bourbon Whiskey</li>
               <li>Wermut</li>
               <li>Campari</li>
-           
             </ul>
           </div>
           <div>
@@ -607,8 +593,7 @@
         </div>
       </article>
 
-
-                <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://upload.wikimedia.org/wikipedia/commons/5/54/Adios_Motherfucker_Cocktail.jpg" alt="Blue Lagoon" />
           <div class="card-body">
@@ -625,7 +610,6 @@
               <li>Blue Curaçao</li>
               <li>Zitronensaft</li>
               <li>Sprite</li>
-             
             </ul>
           </div>
           <div>
@@ -633,7 +617,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -658,14 +642,14 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Pina_colada_7093.JPG" alt="Pina Colada" />
           <div class="card-body">
@@ -682,7 +666,6 @@
               <li>Kokossirup</li>
               <li>Sahne</li>
               <li>Ananassaft</li>
-             
             </ul>
           </div>
           <div>
@@ -714,16 +697,16 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                            <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://recipesfromapantry.com/wp-content/uploads/2018/04/strawberry-daiquiri-4.jpg" alt="Daiquiri" />
+          <img class="card-image" src="https://recipesfromapantry.com/wp-content/uploads/2018/04/strawberry-daiquiri-4.jpg" alt="Frozen Daiquiri Mango/ Erdbeere" />
           <div class="card-body">
             <h3 class="card-title">Frozen Daiquiri Mango/ Erdbeere</h3>
             <p class="card-note">Wie ein alkoholisches Wassereis - Sommer HIT!</p>
@@ -739,7 +722,6 @@
               <li>Fruchtsirup</li>
               <li>Limettensaft</li>
               <li>Zitronensaft</li>
-             
             </ul>
           </div>
           <div>
@@ -778,7 +760,7 @@
         </div>
       </article>
 
-                                  <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://drimaco.com/_next/image?url=%2Fimages%2Fcocktails%2Fbahama-mama.webp&w=1024&q=75" alt="Bahama Mama" />
           <div class="card-body">
@@ -797,7 +779,6 @@
               <li>Zitronensaft</li>
               <li>Ananassaft</li>
               <li>Orangensaft</li>
-             
             </ul>
           </div>
           <div>
@@ -811,7 +792,7 @@
           <div class="card-meta">
             <div class="meta-item">
               <span class="meta-label">Preis</span>
-              <span class="price">8,50</span>
+              <span class="price">8,50€</span>
             </div>
             <div class="meta-item">
               <span class="meta-label">Alkohol</span>
@@ -819,7 +800,7 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
                 <span class="star">★</span>
               </div>
             </div>
@@ -837,9 +818,7 @@
         </div>
       </article>
 
-
-
-                                        <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://img.chefkoch-cdn.de/rezepte/629891163497995/bilder/1616502/crop-960x640/solero-cocktail.jpg" alt="Solero" />
           <div class="card-body">
@@ -856,7 +835,6 @@
               <li>Vanillesirup</li>
               <li>Zitronensaft</li>
               <li>Maracujasaft</li>
-             
             </ul>
           </div>
           <div>
@@ -895,9 +873,9 @@
         </div>
       </article>
 
-                                              <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.rawpixel.com/image_social_portrait/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZnJzd2VldF90ZWFfd2l0aF9sZW1vbi1pbWFnZS1reWNmYmM1dC5qcGc.jpg" />
+          <img class="card-image" src="https://images.rawpixel.com/image_social_portrait/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvZnJzd2VldF90ZWFfd2l0aF9sZW1vbi1pbWFnZS1reWNmYmM1dC5qcGc.jpg" alt="Long Island Ice Tea" />
           <div class="card-body">
             <h3 class="card-title">Long Island Ice Tea</h3>
             <p class="card-note">Der ultimative Mix. Fünf verschiedene Spirituosen vereint mit spritziger Zitrone, Orange und einem Schuss Cola für einen intensiven, legendären Drink.</p>
@@ -910,14 +888,13 @@
             <ul class="ingredients">
               <li>Vodka</li>
               <li>Rum</li>
-              <li>Tequilla</li>
+              <li>Tequila</li>
               <li>Gin</li>
               <li>Triple Sec</li>
               <li>Zitronensaft</li>
               <li>Lime juice</li>
               <li>Orangensaft</li>
               <li>Cola</li>
-             
             </ul>
           </div>
           <div>
@@ -949,15 +926,16 @@
               <div class="stars">
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
-            <article class="card active-display" data-category="PARTY-FAVORITES">
+
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://www.gutekueche.at/storage/media/recipe/101251/resp/moscow-mule-ohne-kupferbecher___webp_940_705.webp" alt="Moscow Mule" />
           <div class="card-body">
@@ -973,7 +951,7 @@
               <li>Vodka</li>
               <li>Limette</li>
               <li>Ginger Beer</li>
-              <li>Gurke</li>         
+              <li>Gurke</li>
             </ul>
           </div>
           <div>
@@ -1002,17 +980,17 @@
               <span class="meta-label">Fruchtig</span>
               <div class="stars">
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-              <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://images.pexels.com/photos/11009215/pexels-photo-11009215.jpeg" alt="Mojito" />
           <div class="card-body">
@@ -1028,8 +1006,8 @@
               <li>Rum</li>
               <li>Limette</li>
               <li>Minze</li>
-              <li>Rohrzucker</li> 
-              <li>Sprudelwasser</li> 
+              <li>Rohrzucker</li>
+              <li>Sprudelwasser</li>
             </ul>
           </div>
           <div>
@@ -1059,18 +1037,15 @@
               <div class="stars">
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                   
-      
-      
       <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://img.ccnull.de/1090000/preview/1091284_e24c3e6442b9600934eccdc34dbde435.jpg" alt="Caipirinha" />
@@ -1086,8 +1061,7 @@
             <ul class="ingredients">
               <li>Cachaça</li>
               <li>Limette</li>
-               <li>Rohrzucker</li>
- 
+              <li>Rohrzucker</li>
             </ul>
           </div>
           <div>
@@ -1102,7 +1076,7 @@
               <span class="meta-label">Preis</span>
               <span class="price">9,00€</span>
             </div>
-                       <div class="meta-item">
+            <div class="meta-item">
               <span class="meta-label">Alkohol</span>
               <div class="stars">
                 <span class="star filled">★</span>
@@ -1117,16 +1091,16 @@
               <div class="stars">
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-       <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://img.ccnull.de/1090000/preview/1091292_dffb99a361ec13449c4213b49199d010.jpg" alt="Cuba Libre" />
           <div class="card-body">
@@ -1142,7 +1116,6 @@
               <li>Rum</li>
               <li>Limette</li>
               <li>Cola</li>
- 
             </ul>
           </div>
           <div>
@@ -1151,7 +1124,7 @@
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Koffeinhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -1173,17 +1146,17 @@
               <span class="meta-label">Fruchtig</span>
               <div class="stars">
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-       <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://upload.wikimedia.org/wikipedia/commons/e/e9/Tequila_sunrise.jpg" alt="Tequila Sunrise" />
           <div class="card-body">
@@ -1200,7 +1173,6 @@
               <li>Orangensaft</li>
               <li>Zitrone</li>
               <li>Grenadine</li>
- 
             </ul>
           </div>
           <div>
@@ -1208,7 +1180,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -1233,16 +1205,16 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-             <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.pexels.com/photos/4134386/pexels-photo-4134386.jpeg" alt= "Sex on the Beach" />
+          <img class="card-image" src="https://images.pexels.com/photos/4134386/pexels-photo-4134386.jpeg" alt="Sex on the Beach" />
           <div class="card-body">
             <h3 class="card-title">Sex on the Beach</h3>
             <p class="card-note">Der Inbegriff von Urlaubs-Party. Pfirsich trifft auf Orange und Cranberry.</p>
@@ -1259,7 +1231,6 @@
               <li>Grenadine</li>
               <li>Cranberrysaft</li>
               <li>Orangensaft</li>
- 
             </ul>
           </div>
           <div>
@@ -1267,7 +1238,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -1292,7 +1263,7 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
@@ -1301,10 +1272,10 @@
 
       <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" alt= "Touchdown" />
+          <img class="card-image" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" alt="Touchdown" />
           <div class="card-body">
             <h3 class="card-title">Touchdown</h3>
-            <p class="card-note">Vodka und Apricot Brandy mit Zitrone und Maracuja. Ein süffiger Volltreffer</p>
+            <p class="card-note">Vodka und Apricot Brandy mit Zitrone und Maracuja. Ein süffiger Volltreffer.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -1317,8 +1288,6 @@
               <li>Zitrone</li>
               <li>Grenadine</li>
               <li>Maracujasaft</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1326,7 +1295,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Farbstoff</span>
+              <span class="chip">Farbstoff</span>
             </div>
           </div>
           <div class="card-meta">
@@ -1358,9 +1327,9 @@
         </div>
       </article>
 
-            <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_730,h_548/k%2FPhoto%2FRecipes%2F2024-05-paloma%2Fpaloma-145" alt= "Paloma:" />
+          <img class="card-image" src="https://cdn.apartmenttherapy.info/image/upload/f_auto,q_auto:eco,c_fit,w_730,h_548/k%2FPhoto%2FRecipes%2F2024-05-paloma%2Fpaloma-145" alt="Paloma" />
           <div class="card-body">
             <h3 class="card-title">Paloma</h3>
             <p class="card-note">Tequila und herbe Grapefruit-Limo mit einem Hauch Salz. Spritzig, wild und der perfekte Durstlöscher für heiße Tage.</p>
@@ -1374,9 +1343,6 @@
               <li>Tequila</li>
               <li>Limettensaft</li>
               <li>Grapefruit Limonade</li>
-    
-            
- 
             </ul>
           </div>
           <div>
@@ -1392,7 +1358,7 @@
               <span class="price">9,00€</span>
             </div>
             <div class="meta-item">
-            <span class="meta-label">Alkohol</span>
+              <span class="meta-label">Alkohol</span>
               <div class="stars">
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
@@ -1407,17 +1373,17 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                  <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
+      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.pexels.com/photos/31331973/pexels-photo-31331973/free-photo-of-elegant-passion-fruit-martini-physalis.jpeg" alt= "Pornstar Martini" />
+          <img class="card-image" src="https://images.pexels.com/photos/31331973/pexels-photo-31331973/free-photo-of-elegant-passion-fruit-martini-physalis.jpeg" alt="Pornstar Martini" />
           <div class="card-body">
             <h3 class="card-title">Pornstar Martini</h3>
             <p class="card-note">Vanille-Vodka und Passionsfrucht treffen auf einen prickelnden Shot Prosecco. Glamourös, fruchtig und der absolute Star jeder Nacht.</p>
@@ -1432,10 +1398,7 @@
               <li>Passionsfruchtlikör</li>
               <li>Zitrone</li>
               <li>Vanillesirup</li>
-
               <li>Sekt (zusätzlich)</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1443,7 +1406,7 @@
             <div class="chips">
               <span class="chip">alkoholhaltig</span>
               <span class="chip">Säurungsmittel</span>
-               <span class="chip">Sulfite</span>
+              <span class="chip">Sulfite</span>
             </div>
           </div>
           <div class="card-meta">
@@ -1475,13 +1438,12 @@
         </div>
       </article>
 
-
       <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.pexels.com/photos/34429981/pexels-photo-34429981/free-photo-of-classic-espresso-martini-on-marble-table.jpeg" alt= "Espresso Martini" />
+          <img class="card-image" src="https://images.pexels.com/photos/34429981/pexels-photo-34429981/free-photo-of-classic-espresso-martini-on-marble-table.jpeg" alt="Espresso Martini" />
           <div class="card-body">
             <h3 class="card-title">Espresso Martini</h3>
-            <p class="card-note">Wachmacher mit Stil. Kräftiger Espresso und Vodka sorgen für den ultimativen Koffein-Kick</p>
+            <p class="card-note">Wachmacher mit Stil. Kräftiger Espresso und Vodka sorgen für den ultimativen Koffein-Kick.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
@@ -1493,8 +1455,6 @@
               <li>Kaffeelikör</li>
               <li>Espresso</li>
               <li>Zucker</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1508,7 +1468,7 @@
           <div class="card-meta">
             <div class="meta-item">
               <span class="meta-label">Preis</span>
-              <span class="price">9,50</span>
+              <span class="price">9,50€</span>
             </div>
             <div class="meta-item">
               <span class="meta-label">Alkohol</span>
@@ -1523,21 +1483,20 @@
             <div class="meta-item">
               <span class="meta-label">Fruchtig</span>
               <div class="stars">
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-
-            <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
+      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://i2.pickpik.com/photos/872/655/628/margarita-drink-cocktail-tropical-preview.jpg" alt= "Margarita" />
+          <img class="card-image" src="https://i2.pickpik.com/photos/872/655/628/margarita-drink-cocktail-tropical-preview.jpg" alt="Margarita" />
           <div class="card-body">
             <h3 class="card-title">Margarita</h3>
             <p class="card-note">Tequila, Salz und Limette. Der Inbegriff von Party-Eleganz.</p>
@@ -1552,8 +1511,6 @@
               <li>Limette</li>
               <li>Triple Sec</li>
               <li>Zucker</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1575,7 +1532,7 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
               </div>
             </div>
             <div class="meta-item">
@@ -1583,18 +1540,18 @@
               <div class="stars">
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                  <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://www.lifehackerin.com/wp-content/uploads/2022/01/Lifehackeirn_Ipanema-1536x1152.jpg" alt= "Ipanema" />
+          <img class="card-image" src="https://www.lifehackerin.com/wp-content/uploads/2022/01/Lifehackeirn_Ipanema-1536x1152.jpg" alt="Ipanema" />
           <div class="card-body">
             <h3 class="card-title">Ipanema</h3>
             <p class="card-note">Die alkoholfreie Caipi-Alternative mit Ginger Ale.</p>
@@ -1609,8 +1566,6 @@
               <li>Limette</li>
               <li>Maracujasaft</li>
               <li>Ginger Ale</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1648,11 +1603,10 @@
           </div>
         </div>
       </article>
-      
 
-                        <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://colorsoffood.de/wp-content/uploads/2018/07/Passionsfrucht-Gin-Gin-Mule-4.jpg" alt= "Maracuja Mule" />
+          <img class="card-image" src="https://colorsoffood.de/wp-content/uploads/2018/07/Passionsfrucht-Gin-Gin-Mule-4.jpg" alt="Maracuja Mule" />
           <div class="card-body">
             <h3 class="card-title">Maracuja Mule</h3>
             <p class="card-note">Spritzig, scharf und fruchtig – ohne den Alkohol-Flash.</p>
@@ -1663,12 +1617,9 @@
           <div>
             <p class="section-title">Zutaten</p>
             <ul class="ingredients">
-              
               <li>Limette</li>
               <li>Maracujasaft</li>
               <li>Ginger Ale</li>
-            
- 
             </ul>
           </div>
           <div>
@@ -1699,17 +1650,17 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
 
-                              <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="https://images.pexels.com/photos/10986589/pexels-photo-10986589.jpeg" alt= "Virgin Colada" />
+          <img class="card-image" src="https://images.pexels.com/photos/10986589/pexels-photo-10986589.jpeg" alt="Virgin Colada" />
           <div class="card-body">
             <h3 class="card-title">Virgin Colada</h3>
             <p class="card-note">Sanfte Kokosnuss und fruchtige Ananas im Mix. Cremiges Strandfeeling im Glas – ganz ohne Umdrehungen.</p>
@@ -1723,9 +1674,6 @@
               <li>Sahne</li>
               <li>Kokossirup</li>
               <li>Ananassaft</li>
-             
-            
- 
             </ul>
           </div>
           <div>
@@ -1756,23 +1704,17 @@
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
                 <span class="star filled">★</span>
-                <span class="star ">★</span>
-                <span class="star ">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
       </article>
-
-
-
-      
     </section>
 
     <footer class="footer">Sprecht uns gerne bei Fragen oder Anregungen an, wir versuchen auf Wünsche einzugehen</footer>
   </main>
-
-
 
   <script src="script.js"></script>
 </body>
