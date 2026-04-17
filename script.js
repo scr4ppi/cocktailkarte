@@ -1,3 +1,25 @@
+  function checkSpecialButtonVisibility() {
+    // Ändere dies auf 'false', wenn die Automatik live gehen soll!
+    const TEST_MODE = false; 
+
+    const now = new Date();
+    const day = now.getDay();   // 0 = Sonntag, 6 = Samstag
+    const hour = now.getHours();
+    const button = document.getElementById('special-button');
+
+    // Prüfe die Zeit-Logik
+    let isVisible = (day === 6 && hour >= 10) || (day === 0 && hour < 12);
+
+    // Wenn der Test-Modus aktiv ist, überschreiben wir das Ergebnis
+    if (TEST_MODE || isVisible) {
+      button.style.display = 'inline-block';
+    } else {
+      button.style.display = 'none';
+    }
+  }
+
+  window.onload = checkSpecialButtonVisibility;
+
 
 const cards = document.querySelectorAll('.card');
   cards.forEach((card) => {
