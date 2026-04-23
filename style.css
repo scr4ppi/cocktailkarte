@@ -12,6 +12,17 @@ body {
   color: #ffffff;
 }
 
+.card-toggle {
+  position: relative;
+  z-index: 1;
+}
+
+.card.happy-hour::before,
+.card.cocktail-abend::before {
+  max-width: calc(100% - 28px);
+  white-space: nowrap;
+}
+
 body {
   position: relative;
   overflow-x: hidden;
