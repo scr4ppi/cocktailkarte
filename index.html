@@ -3,16 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-92TT4V9LYB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-92TT4V9LYB"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-92TT4V9LYB');
+  </script>
 
-  gtag('config', 'G-92TT4V9LYB');
-</script>
-  
   <title>Roonburg Cocktailkarte</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -41,14 +40,14 @@
       <button class="category-btn" data-category="MAIN-CHARACTER-ENERGY">MAIN CHARACTER ENERGY</button>
       <button class="category-btn" data-category="SPIRIT-FORWARD">SPIRIT FORWARD</button>
       <button class="category-btn" data-category="ZERO-PROOF">ZERO PROOF (Virgin)</button>
-      <button id="special-button" class="category-btn btn-happy-hour" data-category="Happy-Hour" style="display: none;">
-        Happy Hour/ C. d. Tages
+      <button id="special-button" class="category-btn btn-happy-hour" data-category="specials" style="display: none;">
+        Aktuelle Specials
       </button>
       <button class="category-btn btn-seasonal" data-category="Seasonal">Seasonal</button>
     </nav>
 
     <section class="list">
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display" data-category="FRESH-ZESTY" data-drink-id="whiskey-sour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/whiskeySour_11zon.webp" alt="Whiskey Sour" />
           <div class="card-body">
@@ -104,7 +103,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display" data-category="FRESH-ZESTY" data-drink-id="new-york-sour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/NewYorkSour.JPG.webp" alt="New York Sour - Twist" />
           <div class="card-body">
@@ -161,7 +160,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display" data-category="FRESH-ZESTY" data-drink-id="pisco-sour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/PiscoSour.webp" alt="Pisco Sour" />
           <div class="card-body">
@@ -218,7 +217,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="FRESH-ZESTY">
+      <article class="card active-display" data-category="FRESH-ZESTY" data-drink-id="melon-sour">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/MelonSour.JPG.webp" alt="Melon Sour" />
           <div class="card-body">
@@ -275,7 +274,7 @@
         </div>
       </article>
 
-      <article class="card active-display happy-hour" data-category="FRESH-ZESTY Happy-Hour">
+      <article class="card active-display" data-category="FRESH-ZESTY" data-drink-id="gin-fizz">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/GinFizz.JPG.webp" alt="Gin Fizz" />
           <div class="card-body">
@@ -330,7 +329,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="mai-tai">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/MaiTai.JPG.webp" alt="Mai Tai" />
           <div class="card-body">
@@ -385,7 +384,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="zombie">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Zombie.webp" alt="Zombie" />
           <div class="card-body">
@@ -441,7 +440,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="SPIRIT-FORWARD">
+      <article class="card active-display" data-category="SPIRIT-FORWARD" data-drink-id="negroni">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Negroni.JPG.webp" alt="Negroni" />
           <div class="card-body">
@@ -496,7 +495,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="SPIRIT-FORWARD">
+      <article class="card active-display" data-category="SPIRIT-FORWARD" data-drink-id="martini">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Martini.JPG.webp" alt="Martini" />
           <div class="card-body">
@@ -549,7 +548,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="SPIRIT-FORWARD">
+      <article class="card active-display" data-category="SPIRIT-FORWARD" data-drink-id="boulevardier">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Boulevadier.webp" alt="Boulevardier" />
           <div class="card-body">
@@ -603,7 +602,7 @@
         </div>
       </article>
 
-      <article class="card active-display cocktail-abend" data-category="VACAY-VIBES Happy-Hour">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="blue-lagoon">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/BlueLagoon.webp" alt="Blue Lagoon" />
           <div class="card-body">
@@ -659,7 +658,7 @@
         </div>
       </article>
 
-      <article class="card active-display happy-hour" data-category="VACAY-VIBES Happy-Hour">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="pina-colada">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Pinia_Colada.JPG.webp" alt="Pina Colada" />
           <div class="card-body">
@@ -714,7 +713,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="frozen-daiquiri">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Daiquiris.webp" alt="Frozen Daiquiri Mango/ Erdbeere" />
           <div class="card-body">
@@ -770,7 +769,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="bahama-mama">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/BahamaMama.webp" alt="Bahama Mama" />
           <div class="card-body">
@@ -828,7 +827,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="VACAY-VIBES">
+      <article class="card active-display" data-category="VACAY-VIBES" data-drink-id="solero">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Solero.webp" alt="Solero" />
           <div class="card-body">
@@ -883,7 +882,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="long-island-ice-tea">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/LongIslandIceTea.JPG.webp" alt="Long Island Ice Tea" />
           <div class="card-body">
@@ -945,7 +944,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="moscow-mule">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/MoscowMule.JPG.webp" alt="Moscow Mule" />
           <div class="card-body">
@@ -1000,7 +999,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="mojito">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/mojito.JPG.webp" alt="Mojito" />
           <div class="card-body">
@@ -1056,7 +1055,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="caipirinha">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Caipirinha.webp" alt="Caipirinha" />
           <div class="card-body">
@@ -1110,7 +1109,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="cuba-libre">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/CubaLibre.webp" alt="Cuba Libre" />
           <div class="card-body">
@@ -1166,7 +1165,7 @@
         </div>
       </article>
 
-      <article class="card active-display happy-hour" data-category="PARTY-FAVORITES Happy-Hour">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="tequila-sunrise">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Tequila-SUnrise.webp" alt="Tequila Sunrise" />
           <div class="card-body">
@@ -1222,7 +1221,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="sex-on-the-beach">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/SexontheBeach.JPG.webp" alt="Sex on the Beach" />
           <div class="card-body">
@@ -1280,7 +1279,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="touchdown">
         <button class="card-toggle" type="button">
           <img class="card-image" src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=300&q=80" alt="Touchdown" />
           <div class="card-body">
@@ -1337,7 +1336,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="PARTY-FAVORITES">
+      <article class="card active-display" data-category="PARTY-FAVORITES" data-drink-id="paloma">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Paloma.JPG.webp" alt="Paloma" />
           <div class="card-body">
@@ -1391,7 +1390,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
+      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY" data-drink-id="pornstar-martini">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/PornstarMartini.JPG.webp" alt="Pornstar Martini" />
           <div class="card-body">
@@ -1448,7 +1447,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
+      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY" data-drink-id="espresso-martini">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/EspressoMartini.webp" alt="Espresso Martini" />
           <div class="card-body">
@@ -1504,7 +1503,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY">
+      <article class="card active-display" data-category="MAIN-CHARACTER-ENERGY" data-drink-id="margarita">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Margharita.JPG.webp" alt="Margarita" />
           <div class="card-body">
@@ -1559,7 +1558,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF" data-drink-id="ipanema">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Ipanema.JPG.webp" alt="Ipanema" />
           <div class="card-body">
@@ -1614,7 +1613,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF" data-drink-id="maracuja-mule">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/MaracujaMule.JPG.webp" alt="Maracuja Mule" />
           <div class="card-body">
@@ -1669,7 +1668,7 @@
         </div>
       </article>
 
-      <article class="card active-display" data-category="ZERO-PROOF">
+      <article class="card active-display" data-category="ZERO-PROOF" data-drink-id="virgin-colada">
         <button class="card-toggle" type="button">
           <img class="card-image" src="webp/Pinia_Colada.JPG.webp" alt="Virgin Colada" />
           <div class="card-body">
@@ -1723,12 +1722,12 @@
         </div>
       </article>
 
-            <article class="card active-display happy-hour" data-category="ZERO-PROOF Happy-Hour">
+      <article class="card active-display" data-category="ZERO-PROOF" data-drink-id="miami">
         <button class="card-toggle" type="button">
-          <img class="card-image" src="webp/SexontheBeach.JPG.webp" alt="Virgin Colada" />
+          <img class="card-image" src="webp/SexontheBeach.JPG.webp" alt="Miami" />
           <div class="card-body">
             <h3 class="card-title">Miami</h3>
-            <p class="card-note">Fruchtig, leicht süß und erfrischend – der Miami Cocktail erinnert mit seinen Zitrus- und Tropennoten an einen Sonnenuntergang am Strand..</p>
+            <p class="card-note">Fruchtig, leicht süß und erfrischend – der Miami Cocktail erinnert mit seinen Zitrus- und Tropennoten an einen Sonnenuntergang am Strand.</p>
           </div>
           <div class="card-arrow">▾</div>
         </button>
