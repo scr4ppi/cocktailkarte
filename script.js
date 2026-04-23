@@ -10,28 +10,29 @@ function checkSpecialButtonVisibility() {
 
   const isVisible = (day === 6 && hour >= 10) || (day === 0 && hour < 12);
 
-  if (TEST_MODE || isVisible) {
-    button.style.display = "inline-block";
-  } else {
-    button.style.display = "none";
-  }
+  button.style.display = (TEST_MODE || isVisible) ? "inline-block" : "none";
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   checkSpecialButtonVisibility();
 
   const cards = document.querySelectorAll(".card");
+  const categoryBtns = document.querySelectorAll(".category-btn");
 
   cards.forEach((card) => {
     const button = card.querySelector(".card-toggle");
     if (!button) return;
 
     button.addEventListener("click", () => {
-      card.classList.toggle("open");
+      const isOpen = card.classList.contains("open");
+
+      cards.forEach((c) => c.classList.remove("open"));
+
+      if (!isOpen) {
+        card.classList.add("open");
+      }
     });
   });
-
-  const categoryBtns = document.querySelectorAll(".category-btn");
 
   categoryBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
