@@ -3,9 +3,9 @@ const ROTATION_START = "2026-04-20"; // Montag = Start von Woche 1
 
 const FOUR_WEEK_SPECIALS = [
   {
-    happyHourAlcoholic: ["gin-fizz", "blue-lagoon", "tequila-sunrise"],
+    happyHourAlcoholic: ["solero", "gin-fizz", "pina-colada"],
     happyHourVirgin: "miami",
-    cocktailOfTheEvening: "pisco-sour"
+    cocktailOfTheEvening: "pornsar-martini"
   },
   {
     happyHourAlcoholic: ["melon-sour", "pina-colada", "sex-on-the-beach"],
