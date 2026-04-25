@@ -47,13 +47,20 @@ function getBerlinDateParts(date = new Date()) {
   });
 
   const weekdayMap = {
-    "So": 0, "So.": 0,
-    "Mo": 1, "Mo.": 1,
-    "Di": 2, "Di.": 2,
-    "Mi": 3, "Mi.": 3,
-    "Do": 4, "Do.": 4,
-    "Fr": 5, "Fr.": 5,
-    "Sa": 6, "Sa.": 6
+    "So": 0,
+    "So.": 0,
+    "Mo": 1,
+    "Mo.": 1,
+    "Di": 2,
+    "Di.": 2,
+    "Mi": 3,
+    "Mi.": 3,
+    "Do": 4,
+    "Do.": 4,
+    "Fr": 5,
+    "Fr.": 5,
+    "Sa": 6,
+    "Sa.": 6
   };
 
   return {
@@ -66,7 +73,6 @@ function getBerlinDateParts(date = new Date()) {
     weekday: weekdayMap[map.weekday]
   };
 }
-
 function getBerlinDateOnly(date = new Date()) {
   const parts = getBerlinDateParts(date);
   return new Date(Date.UTC(parts.year, parts.month - 1, parts.day));
