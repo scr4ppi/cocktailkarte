@@ -8,18 +8,18 @@ const FOUR_WEEK_SPECIALS = [
     cocktailOfTheEvening: "whiskey-sour"
   },
   {
-    happyHourAlcoholic: ["melon-sour", "pina-colada", "sex-on-the-beach"],
-    happyHourVirgin: "ipanema",
+        happyHourAlcoholic: ["melon-sour", "blue-lagoon", "tequila-sunrise"],
+    happyHourVirgin: "maracuja-mule",
     cocktailOfTheEvening: "espresso-martini"
   },
   {
-    happyHourAlcoholic: ["solero", "moscow-mule", "paloma"],
-    happyHourVirgin: "maracuja-mule",
-    cocktailOfTheEvening: "whiskey-sour"
+   happyHourAlcoholic: ["bahama-mama", "gin-fizz", "sex-on-the-beach"],
+    happyHourVirgin: "virgin-colada",
+    cocktailOfTheEvening: "pisco-sour"
   },
   {
-    happyHourAlcoholic: ["mai-tai", "mojito", "pornstar-martini"],
-    happyHourVirgin: "virgin-colada",
+    happyHourAlcoholic: ["touchdown", "solero", "pina-colada"],
+    happyHourVirgin: "Miami",
     cocktailOfTheEvening: "margarita"
   }
 ];
