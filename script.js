@@ -1,11 +1,11 @@
 const TIMEZONE = "Europe/Berlin";
-const ROTATION_START = "2026-04-20"; // Montag = Start von Woche 1
+const ROTATION_START = "2026-04-27"; // Montag = Start von Woche 1
 
 const FOUR_WEEK_SPECIALS = [
-  {
-    happyHourAlcoholic: ["solero", "gin-fizz", "pina-colada"],
-    happyHourVirgin: "miami",
-    cocktailOfTheEvening: "pornstar-martini"
+ {
+    happyHourAlcoholic: ["tequila-sunrise", "pina-colada", "blue-lagoon"],
+    happyHourVirgin: "ipanema",
+    cocktailOfTheEvening: "whiskey-sour"
   },
   {
     happyHourAlcoholic: ["melon-sour", "pina-colada", "sex-on-the-beach"],
