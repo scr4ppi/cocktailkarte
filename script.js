@@ -222,20 +222,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
       const wasOpen = card.classList.contains("open");
+      const drinkTitle = card.querySelector(".card-title")?.innerText || "Unbekannter Drink";
 
       cards.forEach((c) => c.classList.remove("open"));
 
       if (!wasOpen) {
         card.classList.add("open");
+        
+        // --- GOOGLE ANALYTICS: Drink aufklappen ---
+        gtag('event', 'view_drink_details', {
+          'drink_name': drinkTitle,
+          'event_category': 'Interaktion',
+          'event_label': drinkTitle
+        });
       }
     });
   });
 
   categoryBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
+      const categoryName = btn.innerText || btn.dataset.category;
+      
       categoryBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       applyCurrentFilter(cards);
+
+      // --- GOOGLE ANALYTICS: Kategorie Filter ---
+      gtag('event', 'select_category', {
+        'category_id': categoryName.trim(),
+        'event_category': 'Navigation',
+        'event_label': categoryName.trim()
+      });
     });
   });
 
