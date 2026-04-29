@@ -1,25 +1,25 @@
 const TIMEZONE = "Europe/Berlin";
-const ROTATION_START = "2026-04-27"; // Montag = Start von Woche 1
+const ROTATION_START = "2026-04-27";
 
 const FOUR_WEEK_SPECIALS = [
- {
+  {
     happyHourAlcoholic: ["tequila-sunrise", "pina-colada", "blue-lagoon"],
     happyHourVirgin: "ipanema",
     cocktailOfTheEvening: "whiskey-sour"
   },
   {
-        happyHourAlcoholic: ["melon-sour", "blue-lagoon", "tequila-sunrise"],
+    happyHourAlcoholic: ["melon-sour", "blue-lagoon", "tequila-sunrise"],
     happyHourVirgin: "maracuja-mule",
     cocktailOfTheEvening: "espresso-martini"
   },
   {
-   happyHourAlcoholic: ["bahama-mama", "gin-fizz", "sex-on-the-beach"],
+    happyHourAlcoholic: ["bahama-mama", "gin-fizz", "sex-on-the-beach"],
     happyHourVirgin: "virgin-colada",
     cocktailOfTheEvening: "pisco-sour"
   },
   {
     happyHourAlcoholic: ["touchdown", "solero", "pina-colada"],
-    happyHourVirgin: "Miami",
+    happyHourVirgin: "miami", // FIX
     cocktailOfTheEvening: "margarita"
   }
 ];
@@ -47,20 +47,13 @@ function getBerlinDateParts(date = new Date()) {
   });
 
   const weekdayMap = {
-    "So": 0,
-    "So.": 0,
-    "Mo": 1,
-    "Mo.": 1,
-    "Di": 2,
-    "Di.": 2,
-    "Mi": 3,
-    "Mi.": 3,
-    "Do": 4,
-    "Do.": 4,
-    "Fr": 5,
-    "Fr.": 5,
-    "Sa": 6,
-    "Sa.": 6
+    "So": 0, "So.": 0,
+    "Mo": 1, "Mo.": 1,
+    "Di": 2, "Di.": 2,
+    "Mi": 3, "Mi.": 3,
+    "Do": 4, "Do.": 4,
+    "Fr": 5, "Fr.": 5,
+    "Sa": 6, "Sa.": 6
   };
 
   return {
@@ -73,6 +66,7 @@ function getBerlinDateParts(date = new Date()) {
     weekday: weekdayMap[map.weekday]
   };
 }
+
 function getBerlinDateOnly(date = new Date()) {
   const parts = getBerlinDateParts(date);
   return new Date(Date.UTC(parts.year, parts.month - 1, parts.day));
@@ -84,10 +78,7 @@ function getRotationPlanForDate(dateObj) {
   const diffDays = Math.floor(diffMs / 86400000);
   const diffWeeks = Math.floor(diffDays / 7);
 
-  if (diffWeeks < 0) {
-    return FOUR_WEEK_SPECIALS[0];
-  }
-
+  if (diffWeeks < 0) return FOUR_WEEK_SPECIALS[0];
   return FOUR_WEEK_SPECIALS[diffWeeks % 4];
 }
 
@@ -95,23 +86,19 @@ function getCurrentWeekPlan() {
   return getRotationPlanForDate(getBerlinDateOnly());
 }
 
-// Samstag 10:00 bis Sonntag 09:59
 function areSpecialsVisible() {
   const now = getBerlinDateParts();
-
   return (
     (now.weekday === 6 && now.hour >= 10) ||
     (now.weekday === 0 && now.hour < 10)
   );
 }
 
-// Happy Hour nur Samstag 10:00 bis 23:59
 function isHappyHourActive() {
   const now = getBerlinDateParts();
   return now.weekday === 6 && now.hour >= 10;
 }
 
-// Cocktail des Abends Samstag 10:00 bis Sonntag 09:59
 function isCocktailOfTheEveningActive() {
   return areSpecialsVisible();
 }
@@ -119,7 +106,6 @@ function isCocktailOfTheEveningActive() {
 function updateSpecialButtonVisibility() {
   const button = document.getElementById("special-button");
   if (!button) return;
-
   button.style.display = areSpecialsVisible() ? "inline-block" : "none";
 }
 
@@ -222,19 +208,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
       const wasOpen = card.classList.contains("open");
-      const drinkTitle = card.querySelector(".card-title")?.innerText || "Unbekannter Drink";
+      const drinkTitle = card.querySelector(".card-title")?.innerText || "Unbekannt";
 
       cards.forEach((c) => c.classList.remove("open"));
 
       if (!wasOpen) {
         card.classList.add("open");
-        
-        // --- GOOGLE ANALYTICS: Drink aufklappen ---
-        gtag('event', 'view_drink_details', {
-          'drink_name': drinkTitle,
-          'event_category': 'Interaktion',
-          'event_label': drinkTitle
-        });
+
+        if (typeof gtag === "function") {
+          gtag("event", "view_drink_details", {
+            drink_name: drinkTitle
+          });
+        }
       }
     });
   });
@@ -242,17 +227,16 @@ document.addEventListener("DOMContentLoaded", () => {
   categoryBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const categoryName = btn.innerText || btn.dataset.category;
-      
+
       categoryBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       applyCurrentFilter(cards);
 
-      // --- GOOGLE ANALYTICS: Kategorie Filter ---
-      gtag('event', 'select_category', {
-        'category_id': categoryName.trim(),
-        'event_category': 'Navigation',
-        'event_label': categoryName.trim()
-      });
+      if (typeof gtag === "function") {
+        gtag("event", "select_category", {
+          category_id: categoryName.trim()
+        });
+      }
     });
   });
 
