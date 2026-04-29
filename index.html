@@ -4,13 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-92TT4V9LYB"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-92TT4V9LYB');
-  </script>
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const disableTracking = urlParams.get("noTracking") === "true";
+
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+
+  if (!disableTracking) {
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.googletagmanager.com/gtag/js?id=G-92TT4V9LYB";
+    document.head.appendChild(script);
+
+    gtag("js", new Date());
+    gtag("config", "G-92TT4V9LYB");
+  } else {
+    console.log("Tracking deaktiviert (noTracking=true)");
+  }
+</script>
 
   <title>Roonburg Cocktailkarte</title>
   <link rel="stylesheet" href="style.css" />
