@@ -273,10 +273,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
+  applyWeeklySpecials(cards);
+  updateSpecialButtonVisibility();
+  applyCurrentFilter(cards);
 
+  
   setInterval(() => {
-    applyWeeklySpecials(cards);
-    updateSpecialButtonVisibility();
-    applyCurrentFilter(cards);
+    
   }, 60000);
 });
