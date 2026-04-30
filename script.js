@@ -24,7 +24,7 @@ const FOUR_WEEK_SPECIALS = [
   }
 ];
 
-const MANUAL_EVENT_ACTIVE = true;
+const MANUAL_EVENT_ACTIVE = false;
 const MANUAL_EVENT_PRICE = "5,00€";
 
 const MANUAL_EVENT_COCKTAILS = [
