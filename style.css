@@ -138,6 +138,32 @@ body::after {
   backdrop-filter: blur(10px);
 }
 
+.manual-event {
+  border: 2px solid #ff3333;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 0 26px rgba(255, 51, 51, 0.9),
+    inset 0 0 18px rgba(255, 51, 51, 0.16);
+  position: relative;
+}
+
+.manual-event::before {
+  content: "Sonderpreis";
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  background: linear-gradient(135deg, #ff3333, #ff9b3d);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 5px 9px;
+  border-radius: 999px;
+  box-shadow: 0 0 14px rgba(255, 51, 51, 0.75);
+}
+
 .logo-wrap {
   display: flex;
   align-items: center;
