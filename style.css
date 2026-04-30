@@ -162,6 +162,7 @@ body::after {
   padding: 5px 9px;
   border-radius: 999px;
   box-shadow: 0 0 14px rgba(255, 51, 51, 0.75);
+    pointer-events: none;
 }
 
 .logo-wrap {
@@ -294,7 +295,15 @@ body::after {
   border-radius: 18px;
   flex-shrink: 0;
   background: #151515;
+  opacity: 0;
+  transition: opacity 0.28s ease;
 }
+
+.card-image.loaded {
+  opacity: 1;
+}
+
+
 
 .card-body {
   flex: 1;
