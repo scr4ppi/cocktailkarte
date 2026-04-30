@@ -24,6 +24,15 @@ const FOUR_WEEK_SPECIALS = [
   }
 ];
 
+const MANUAL_EVENT_ACTIVE = true;
+
+const MANUAL_EVENT_PRICE = "5,00€";
+
+const MANUAL_EVENT_COCKTAILS = [
+  "cuba-libre",
+  "sex-on-the-beach"
+];
+
 function getBerlinDateParts(date = new Date()) {
   const formatter = new Intl.DateTimeFormat("de-DE", {
     timeZone: TIMEZONE,
@@ -131,6 +140,63 @@ function clearDynamicSpecials(cards) {
 function applyWeeklySpecials(cards) {
   restoreOriginalPrices(cards);
   clearDynamicSpecials(cards);
+  clearManualEventSpecials(cards);
+
+  const plan = getCurrentWeekPlan();
+
+  if (plan) {
+    const happyHourActive = isHappyHourActive();
+    const cocktailOfEveningActive = isCocktailOfTheEveningActive();
+
+    cards.forEach((card) => {
+      const drinkId = card.dataset.drinkId;
+      if (!drinkId) return;
+
+      const isAlcoholicHappyHour = plan.happyHourAlcoholic.includes(drinkId);
+      const isVirginHappyHour = plan.happyHourVirgin === drinkId;
+      const isCocktailOfTheEvening = plan.cocktailOfTheEvening === drinkId;
+
+      if (happyHourActive && (isAlcoholicHappyHour || isVirginHappyHour)) {
+        card.classList.add("happy-hour");
+      }
+
+      if (cocktailOfEveningActive && isCocktailOfTheEvening) {
+        card.classList.add("cocktail-abend");
+
+        const priceEl = card.querySelector(".price");
+        if (priceEl) {
+          priceEl.textContent = "6,00€";
+        }
+      }
+    });
+  }
+
+  applyManualEventSpecials(cards);
+}
+
+  function clearManualEventSpecials(cards) {
+  cards.forEach((card) => {
+    card.classList.remove("manual-event");
+  });
+}
+
+function applyManualEventSpecials(cards) {
+  if (!MANUAL_EVENT_ACTIVE) return;
+
+  cards.forEach((card) => {
+    const drinkId = card.dataset.drinkId;
+    if (!drinkId) return;
+
+    if (MANUAL_EVENT_COCKTAILS.includes(drinkId)) {
+      card.classList.add("manual-event");
+
+      const priceEl = card.querySelector(".price");
+      if (priceEl) {
+        priceEl.textContent = MANUAL_EVENT_PRICE;
+      }
+    }
+  });
+}
 
   const plan = getCurrentWeekPlan();
   if (!plan) return;
