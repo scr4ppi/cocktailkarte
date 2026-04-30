@@ -229,7 +229,16 @@ function applyCurrentFilter(cards) {
 document.addEventListener("DOMContentLoaded", () => {
   const cards = document.querySelectorAll(".card");
   const categoryBtns = document.querySelectorAll(".category-btn");
-
+document.querySelectorAll(".card-image").forEach((img) => {
+  if (img.complete) {
+    img.classList.add("loaded");
+  } else {
+    img.addEventListener("load", () => {
+      img.classList.add("loaded");
+    });
+  }
+});
+  
   applyWeeklySpecials(cards);
   updateSpecialButtonVisibility();
   applyCurrentFilter(cards);
