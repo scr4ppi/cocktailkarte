@@ -19,13 +19,12 @@ const FOUR_WEEK_SPECIALS = [
   },
   {
     happyHourAlcoholic: ["touchdown", "solero", "pina-colada"],
-    happyHourVirgin: "miami", // FIX
+    happyHourVirgin: "miami",
     cocktailOfTheEvening: "margarita"
   }
 ];
 
 const MANUAL_EVENT_ACTIVE = true;
-
 const MANUAL_EVENT_PRICE = "5,00€";
 
 const MANUAL_EVENT_COCKTAILS = [
@@ -97,6 +96,7 @@ function getCurrentWeekPlan() {
 
 function areSpecialsVisible() {
   const now = getBerlinDateParts();
+
   return (
     (now.weekday === 6 && now.hour >= 10) ||
     (now.weekday === 0 && now.hour < 10)
@@ -115,6 +115,7 @@ function isCocktailOfTheEveningActive() {
 function updateSpecialButtonVisibility() {
   const button = document.getElementById("special-button");
   if (!button) return;
+
   button.style.display = areSpecialsVisible() ? "inline-block" : "none";
 }
 
@@ -133,14 +134,31 @@ function restoreOriginalPrices(cards) {
 
 function clearDynamicSpecials(cards) {
   cards.forEach((card) => {
-    card.classList.remove("happy-hour", "cocktail-abend");
+    card.classList.remove("happy-hour", "cocktail-abend", "manual-event");
+  });
+}
+
+function applyManualEventSpecials(cards) {
+  if (!MANUAL_EVENT_ACTIVE) return;
+
+  cards.forEach((card) => {
+    const drinkId = card.dataset.drinkId;
+    if (!drinkId) return;
+
+    if (MANUAL_EVENT_COCKTAILS.includes(drinkId)) {
+      card.classList.add("manual-event");
+
+      const priceEl = card.querySelector(".price");
+      if (priceEl) {
+        priceEl.textContent = MANUAL_EVENT_PRICE;
+      }
+    }
   });
 }
 
 function applyWeeklySpecials(cards) {
   restoreOriginalPrices(cards);
   clearDynamicSpecials(cards);
-  clearManualEventSpecials(cards);
 
   const plan = getCurrentWeekPlan();
 
@@ -174,59 +192,6 @@ function applyWeeklySpecials(cards) {
   applyManualEventSpecials(cards);
 }
 
-  function clearManualEventSpecials(cards) {
-  cards.forEach((card) => {
-    card.classList.remove("manual-event");
-  });
-}
-
-function applyManualEventSpecials(cards) {
-  if (!MANUAL_EVENT_ACTIVE) return;
-
-  cards.forEach((card) => {
-    const drinkId = card.dataset.drinkId;
-    if (!drinkId) return;
-
-    if (MANUAL_EVENT_COCKTAILS.includes(drinkId)) {
-      card.classList.add("manual-event");
-
-      const priceEl = card.querySelector(".price");
-      if (priceEl) {
-        priceEl.textContent = MANUAL_EVENT_PRICE;
-      }
-    }
-  });
-}
-
-  const plan = getCurrentWeekPlan();
-  if (!plan) return;
-
-  const happyHourActive = isHappyHourActive();
-  const cocktailOfEveningActive = isCocktailOfTheEveningActive();
-
-  cards.forEach((card) => {
-    const drinkId = card.dataset.drinkId;
-    if (!drinkId) return;
-
-    const isAlcoholicHappyHour = plan.happyHourAlcoholic.includes(drinkId);
-    const isVirginHappyHour = plan.happyHourVirgin === drinkId;
-    const isCocktailOfTheEvening = plan.cocktailOfTheEvening === drinkId;
-
-    if (happyHourActive && (isAlcoholicHappyHour || isVirginHappyHour)) {
-      card.classList.add("happy-hour");
-    }
-
-    if (cocktailOfEveningActive && isCocktailOfTheEvening) {
-      card.classList.add("cocktail-abend");
-
-      const priceEl = card.querySelector(".price");
-      if (priceEl) {
-        priceEl.textContent = "6,00€";
-      }
-    }
-  });
-}
-
 function cardMatchesFilter(card, selectedCategory) {
   const baseCategory = card.dataset.category;
 
@@ -235,7 +200,8 @@ function cardMatchesFilter(card, selectedCategory) {
   if (selectedCategory === "specials") {
     return (
       card.classList.contains("happy-hour") ||
-      card.classList.contains("cocktail-abend")
+      card.classList.contains("cocktail-abend") ||
+      card.classList.contains("manual-event")
     );
   }
 
@@ -274,7 +240,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.addEventListener("click", () => {
       const wasOpen = card.classList.contains("open");
-      const drinkTitle = card.querySelector(".card-title")?.innerText || "Unbekannt";
+      const drinkTitle =
+        card.querySelector(".card-title")?.innerText || "Unbekannt";
 
       cards.forEach((c) => c.classList.remove("open"));
 
@@ -296,6 +263,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       categoryBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
+
       applyCurrentFilter(cards);
 
       if (typeof gtag === "function") {
