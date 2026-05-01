@@ -3,12 +3,12 @@ const ROTATION_START = "2026-04-27";
 
 const FOUR_WEEK_SPECIALS = [
   {
-    happyHourAlcoholic: ["tequila-sunrise", "pina-colada", "blue-lagoon"],
+    happyHourAlcoholic: ["tequila-sunrise", "cuba-libre", "blue-lagoon"],
     happyHourVirgin: "ipanema",
     cocktailOfTheEvening: "whiskey-sour"
   },
   {
-    happyHourAlcoholic: ["melon-sour", "blue-lagoon", "tequila-sunrise"],
+    happyHourAlcoholic: ["melon-sour", "blue-lagoon", "pina-colada"],
     happyHourVirgin: "maracuja-mule",
     cocktailOfTheEvening: "espresso-martini"
   },
