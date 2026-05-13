@@ -335,31 +335,38 @@ body::after {
   }
 }
 
-.manual-event {
-  border: 2px solid #ff3333;
+/* --- MANUAL EVENT KARTEN --- */
+.card.manual-event {
+  border-color: rgba(255, 51, 51, 0.95);
   box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.18),
-    0 0 26px rgba(255, 51, 51, 0.9),
-    inset 0 0 18px rgba(255, 51, 51, 0.16);
+    0 12px 40px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 51, 51, 0.6),
+    0 0 26px rgba(255, 51, 51, 0.3);
   position: relative;
 }
 
-.manual-event::before {
+.card.manual-event::before {
   content: "Sonderpreis";
   position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 10;
-  background: linear-gradient(135deg, #ff3333, #ff9b3d);
-  color: #fff;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 5px 9px;
+  top: 14px;
+  right: 14px;
+  z-index: 3;
+  padding: 8px 12px;
   border-radius: 999px;
-  box-shadow: 0 0 14px rgba(255, 51, 51, 0.75);
-    pointer-events: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: linear-gradient(135deg, #ff3333, #ff9b3d);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Optional: Macht den Preis farbig, wie beim Cocktail des Abends */
+.card.manual-event .price {
+  color: #ff9b3d; 
 }
 
 .logo-wrap {
