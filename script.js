@@ -30,7 +30,7 @@ const MANUAL_EVENT_PRICE = "0,00€";
 const MANUAL_EVENT_COCKTAILS = [
   "espresso-martini",
   "solero",
-  "touchdown",
+  "tequilla-sunrise",
   "cuba-libre"
 ];
 
