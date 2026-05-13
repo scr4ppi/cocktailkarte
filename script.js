@@ -2,7 +2,7 @@ const TIMEZONE = "Europe/Berlin";
 const ROTATION_START = "2026-04-27";
 
 // Trage hier das spezifische Datum für dein Event ein (Format: YYYY-MM-DD)
-const MANUAL_EVENT_DATE = "2026-05-14"; 
+const MANUAL_EVENT_DATE = "2026-05-13"; 
 
 const FOUR_WEEK_SPECIALS = [
   {
