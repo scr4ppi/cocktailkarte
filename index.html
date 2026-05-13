@@ -42,6 +42,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Zeit für einen Drink: Scrolle durch unsere Karte und finde deinen persönlichen Favoriten für heute Abend.
         Von fruchtig-frisch bis herb-intensiv ist für jeden Geschmack das passende Glas dabei.
       </p>
+	  <!-- <a class="back-btn" href="Auswahlseite.html">Zurück zur Auswahl</a>-->
+<button class="finder-open-btn" id="openDrinkFinder" type="button">
+  Was soll ich trinken?
+</button>
     </section>
 
     <nav class="category-nav">
@@ -1790,8 +1794,78 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </article>
     </section>
 
-    <footer class="footer">Sprecht uns gerne bei Fragen oder Anregungen an, wir versuchen auf Wünsche einzugehen</footer>
+  
+     </section>
+
+    <footer class="footer">
+      Sprecht uns gerne bei Fragen oder Anregungen an, wir versuchen auf Wünsche einzugehen
+    </footer>
   </main>
+
+  <div class="finder-modal" id="drinkFinderModal" aria-hidden="true">
+    <div class="finder-modal-card">
+      <button
+        class="finder-close-btn"
+        id="closeDrinkFinder"
+        type="button"
+        aria-label="Drink-Finder schließen">
+        ×
+      </button>
+
+      <section class="finder-section" id="drinkFinder">
+        <div class="finder-header">
+          <p class="finder-kicker">Drink-Finder</p>
+          <h2>Was passt zu dir?</h2>
+          <p>
+            Stell dein Geschmacksprofil ein und finde automatisch passende Cocktails.
+          </p>
+        </div>
+
+        <div class="finder-layout">
+          <div class="radar-wrap">
+            <canvas id="tasteRadar" width="260" height="260"></canvas>
+          </div>
+
+          <div class="finder-controls">
+            <label class="taste-control">
+              <span>Fruchtig</span>
+              <input type="range" min="0" max="5" value="3" data-taste="fruity">
+            </label>
+
+            <label class="taste-control">
+              <span>Alkohol</span>
+              <input type="range" min="0" max="5" value="3" data-taste="alcohol">
+            </label>
+
+            <label class="taste-control">
+              <span>Süß</span>
+              <input type="range" min="0" max="5" value="3" data-taste="sweet">
+            </label>
+
+            <label class="taste-control">
+              <span>Sauer</span>
+              <input type="range" min="0" max="5" value="2" data-taste="sour">
+            </label>
+
+            <label class="taste-control">
+              <span>Bitter</span>
+              <input type="range" min="0" max="5" value="1" data-taste="bitter">
+            </label>
+
+            <label class="taste-control">
+              <span>Cremig</span>
+              <input type="range" min="0" max="5" value="1" data-taste="creamy">
+            </label>
+          </div>
+        </div>
+
+        <div class="finder-results">
+          <h3>Empfehlungen</h3>
+          <div id="finderResults" class="finder-result-list"></div>
+        </div>
+      </section>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
