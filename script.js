@@ -429,11 +429,12 @@ function applyManualEventSpecials(cards) {
   let currentPrice = parseFloat(MANUAL_EVENT_PRICE.replace("€", "").replace(",", "."));
 
   // Greift von 0:00 Uhr bis 7:59 Uhr
+ // Greift von 0:00 Uhr bis 7:59 Uhr
   if (currentHour >= 0 && currentHour <= 7) {
-    // 0 Uhr = +1€
-    // 1 Uhr = +2€
-    // 2 Uhr = +3€ ...
-    currentPrice += (currentHour + 0.5); 
+    // 0-1 Uhr = +0,50€
+    // 1-2 Uhr = +1,00€
+    // 2-3 Uhr = +1,50€
+    currentPrice += ((currentHour + 1) * 0.5); 
   }
 
   const formattedPrice = currentPrice.toFixed(2).replace(".", ",") + "€";
