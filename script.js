@@ -373,7 +373,7 @@ function getCurrentWeekPlan() {
 
 // NEU: Prüft ob genau jetzt das definierte Einzel-Event läuft
 function isManualEventActiveNow() {
-  if (!MANUAL_EVENT_ACTIVE) return false;
+  if (!MANUAL_EVENT_ACTIVE) return true;
 
   const nowParts = getBerlinDateParts();
   const todayDateOnly = getBerlinDateOnly();
