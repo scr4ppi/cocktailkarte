@@ -1,9 +1,6 @@
 const TIMEZONE = "Europe/Berlin";
 const ROTATION_START = "2026-04-27";
 
-// Trage hier das spezifische Datum für dein Event ein (Format: YYYY-MM-DD)
-const MANUAL_EVENT_DATE = "2026-05-13"; 
-
 const FOUR_WEEK_SPECIALS = [
   {
     happyHourAlcoholic: ["tequila-sunrise", "cuba-libre", "blue-lagoon"],
@@ -28,6 +25,7 @@ const FOUR_WEEK_SPECIALS = [
 ];
 
 const MANUAL_EVENT_ACTIVE = true;
+const MANUAL_EVENT_PRICE = "0,00€";
 
 const MANUAL_EVENT_COCKTAILS = [
   "espresso-martini",
@@ -371,41 +369,12 @@ function getCurrentWeekPlan() {
   return getRotationPlanForDate(getBerlinDateOnly());
 }
 
-// NEU: Prüft ob genau jetzt das definierte Einzel-Event läuft
-function isManualEventActiveNow() {
-  // WICHTIG: Das zwingt das Skript dazu, das Event JETZT SOFORT zu starten!
-  return true; 
-}
-
-  const nowParts = getBerlinDateParts();
-  const todayDateOnly = getBerlinDateOnly();
-
-  const eventStartDay = new Date(`${MANUAL_EVENT_DATE}T00:00:00Z`);
-  const eventEndDay = new Date(eventStartDay);
-  eventEndDay.setUTCDate(eventEndDay.getUTCDate() + 1);
-
-  const isStartDay = todayDateOnly.getTime() === eventStartDay.getTime();
-  const isEndDay = todayDateOnly.getTime() === eventEndDay.getTime();
-
-  // Ist es der eingetragene Tag ab 22 Uhr?
-  if (isStartDay && nowParts.hour >= 22) {
-    return true;
-  }
-  // Oder ist es der Tag danach vor 10 Uhr morgens?
-  if (isEndDay && nowParts.hour < 10) {
-    return true;
-  }
-
-  return false;
-}
-
 function areSpecialsVisible() {
   const now = getBerlinDateParts();
 
   return (
     (now.weekday === 6 && now.hour >= 10) ||
-    (now.weekday === 0 && now.hour < 10) ||
-    isManualEventActiveNow() // Event schaltet Specials-Tab ebenfalls frei
+    (now.weekday === 0 && now.hour < 10)
   );
 }
 
@@ -416,10 +385,7 @@ function isHappyHourActive() {
 }
 
 function isCocktailOfTheEveningActive() {
-  return (
-    (getBerlinDateParts().weekday === 6 && getBerlinDateParts().hour >= 10) ||
-    (getBerlinDateParts().weekday === 0 && getBerlinDateParts().hour < 10)
-  );
+  return areSpecialsVisible();
 }
 
 function updateSpecialButtonVisibility() {
@@ -451,20 +417,7 @@ function clearDynamicSpecials(cards) {
 }
 
 function applyManualEventSpecials(cards) {
-  if (!isManualEventActiveNow()) return;
-
-  const now = getBerlinDateParts();
-  let currentManualPrice = 0;
-
-  // Wenn es 22:00 oder 23:00 Uhr ist -> 0€
-  // Danach ab 0 Uhr steigt es pro Stunde (0:00 = 1€, 1:00 = 2€ etc.)
-  if (now.hour >= 22) {
-    currentManualPrice = 0;
-  } else {
-    currentManualPrice = now.hour + 1;
-  }
-
-  const dynamicPriceString = currentManualPrice.toFixed(2).replace(".", ",") + "€";
+  if (!MANUAL_EVENT_ACTIVE) return;
 
   cards.forEach((card) => {
     const drinkId = card.dataset.drinkId;
@@ -477,7 +430,7 @@ function applyManualEventSpecials(cards) {
       const priceEl = card.querySelector(".price");
 
       if (priceEl) {
-        priceEl.textContent = dynamicPriceString;
+        priceEl.textContent = MANUAL_EVENT_PRICE;
       }
     }
   });
@@ -530,7 +483,7 @@ function cardMatchesFilter(card, selectedCategory) {
     return (
       card.classList.contains("happy-hour") ||
       card.classList.contains("cocktail-abend") ||
-      card.classList.contains("manual-event") // Zeigt Manual Event an
+      card.classList.contains("manual-event")
     );
   }
 
