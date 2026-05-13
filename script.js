@@ -433,7 +433,7 @@ function applyManualEventSpecials(cards) {
     // 0 Uhr = +1€
     // 1 Uhr = +2€
     // 2 Uhr = +3€ ...
-    currentPrice += (currentHour + 1); 
+    currentPrice += (currentHour + 0.5); 
   }
 
   const formattedPrice = currentPrice.toFixed(2).replace(".", ",") + "€";
