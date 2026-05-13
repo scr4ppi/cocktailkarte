@@ -423,6 +423,21 @@ function clearDynamicSpecials(cards) {
 function applyManualEventSpecials(cards) {
   if (!MANUAL_EVENT_ACTIVE) return;
 
+  const now = getBerlinDateParts();
+  const currentHour = now.hour;
+
+  let currentPrice = parseFloat(MANUAL_EVENT_PRICE.replace("€", "").replace(",", "."));
+
+  // Greift von 0:00 Uhr bis 7:59 Uhr
+  if (currentHour >= 0 && currentHour <= 7) {
+    // 0 Uhr = +1€
+    // 1 Uhr = +2€
+    // 2 Uhr = +3€ ...
+    currentPrice += (currentHour + 1); 
+  }
+
+  const formattedPrice = currentPrice.toFixed(2).replace(".", ",") + "€";
+
   cards.forEach((card) => {
     const drinkId = card.dataset.drinkId;
 
@@ -434,7 +449,7 @@ function applyManualEventSpecials(cards) {
       const priceEl = card.querySelector(".price");
 
       if (priceEl) {
-        priceEl.textContent = MANUAL_EVENT_PRICE;
+        priceEl.textContent = formattedPrice;
       }
     }
   });
