@@ -202,6 +202,11 @@ body::after {
     display: block;
 }
 
+.card.manual-event {
+    outline: 2px solid #ff3333;
+    outline-offset: -2px; /* Zieht den Rahmen nach innen, damit er nicht übersteht */
+}
+
 .finder-section {
   padding: 4px 18px 22px;
 }
