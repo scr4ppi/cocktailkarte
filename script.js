@@ -1,7 +1,7 @@
 const TIMEZONE = "Europe/Berlin";
 const ROTATION_START = "2026-04-27";
 
-const FORCE_SPECIAL_BUTTON = true; // Setze auf false, um es wieder zu deaktivieren
+const FORCE_SPECIAL_BUTTON = false; // Setze auf false, um es wieder zu deaktivieren
 const FOUR_WEEK_SPECIALS = [
   {
     happyHourAlcoholic: ["tequila-sunrise", "cuba-libre", "blue-lagoon"],
