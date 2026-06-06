@@ -28,7 +28,7 @@ const FOUR_WEEK_SPECIALS = [
     "cuba-libre"
   ],
   "happyHourVirgin": "maracuja-mule",
-  "cocktailOfTheEvening": "touchdown"
+  "cocktailOfTheEvening": "melon-sour"
 },
 {
   "happyHourAlcoholic": [
