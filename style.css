@@ -23,7 +23,7 @@ body::before {
   inset: 0;
   background:
     linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.84)),
-    url("Clubhochkant.png") center/cover no-repeat;
+    url("cocktailbarhintergrund.png") center/cover no-repeat;
   z-index: 0;
 }
 
