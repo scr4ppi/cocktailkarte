@@ -154,23 +154,26 @@ function areSpecialsVisible() {
   const now = getBerlinDateParts();
 
   return (
-    (now.weekday === 6 && now.hour >= 20) || 
+    (now.weekday === 6 && now.hour >= 10) || // Wieder auf 10 Uhr geändert
     (now.weekday === 0 && now.hour < 10)
   );
 }
 
 function isHappyHourActive() {
   const now = getBerlinDateParts();
-  return now.weekday === 6 && now.hour >= 22;
+  return now.weekday === 6 && now.hour >= 10; // Wieder auf 10 Uhr geändert
 }
 
 function isCocktailOfTheEveningActive() {
   const now = getBerlinDateParts();
   return (
-    (now.weekday === 6 && now.hour >= 22) ||
+    (now.weekday === 6 && now.hour >= 10) || // Wieder auf 10 Uhr geändert
     (now.weekday === 0 && now.hour < 10)
   );
 }
+
+
+
 
 function updateSpecialButtonVisibility() {
   const button = document.getElementById("special-button");
