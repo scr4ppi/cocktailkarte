@@ -1,17 +1,18 @@
 const TIMEZONE = "Europe/Berlin";
-const ROTATION_START = "2026-05-23";
+const ROTATION_START = "2026-06-20";
 
 const FORCE_SPECIAL_BUTTON = false; // Setze auf false, um es wieder zu deaktivieren
 const FOUR_WEEK_SPECIALS = [
-{
+861883
+  {
   "happyHourAlcoholic": [
+    "cuba-libre",
     "gin-fizz",
-    "tequila-sunrise",
-    "bahama-mama"
+    "solero"
   ],
   "happyHourVirgin": "ipanema",
-  "cocktailOfTheEvening": "pisco-sour"
-},
+  "cocktailOfTheEvening": "pornstar-martini"
+}
 {
   "happyHourAlcoholic": [
     "moscow-mule",
@@ -21,15 +22,16 @@ const FOUR_WEEK_SPECIALS = [
   "happyHourVirgin": "maracuja-mule",
   "cocktailOfTheEvening": "paloma"
 },
-{
+
+  {
   "happyHourAlcoholic": [
-    "espresso-martini",
-    "touchdown",
-    "cuba-libre"
+    "cuba-libre",
+    "melon-sour",
+    "blue-lagoon"
   ],
-  "happyHourVirgin": "maracuja-mule",
-  "cocktailOfTheEvening": "melon-sour"
-},
+  "happyHourVirgin": "virgin-colada",
+  "cocktailOfTheEvening": "moscow-mule"
+  },
 {
   "happyHourAlcoholic": [
     "blue-lagoon",
