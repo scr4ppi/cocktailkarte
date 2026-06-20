@@ -2,6 +2,19 @@ const TIMEZONE = "Europe/Berlin";
 const ROTATION_START = "2026-06-20";
 
 const FORCE_SPECIAL_BUTTON = false; // Setze auf false, um es wieder zu deaktivieren
+
+// --- DEINE SCHALTER FÜR HEUTE ---
+
+// SCHALTER 1: 30% Rabatt (20-21 Uhr) und 10% Rabatt (21-22 Uhr)
+const PERCENTAGE_DISCOUNT_ACTIVE = false; 
+
+// SCHALTER 2: Normale Happy Hour & Cocktail des Abends
+// true = Läuft ganz normal ab 10 Uhr
+// false = KOMPLETT ABGESAGT (Button verschwindet, normale Preise)
+const REGULAR_HAPPY_HOUR_ACTIVE = false; 
+
+// --------------------------------
+
 const FOUR_WEEK_SPECIALS = [
 {
   "happyHourAlcoholic": [
@@ -141,6 +154,8 @@ function getCurrentWeekPlan() {
 }
 
 function getGlobalDiscountRate() {
+  if (!PERCENTAGE_DISCOUNT_ACTIVE) return 0;
+
   const now = getBerlinDateParts();
   
   if (now.weekday === 6) { 
@@ -152,28 +167,28 @@ function getGlobalDiscountRate() {
 
 function areSpecialsVisible() {
   const now = getBerlinDateParts();
-
-  return (
-    (now.weekday === 6 && now.hour >= 10) || // Wieder auf 10 Uhr geändert
-    (now.weekday === 0 && now.hour < 10)
-  );
+  const isRegularTime = (now.weekday === 6 && now.hour >= 10) || (now.weekday === 0 && now.hour < 10);
+  
+  // Sichtbar, wenn entweder die normalen Specials an sind ODER gerade ein Prozent-Rabatt läuft
+  return (REGULAR_HAPPY_HOUR_ACTIVE && isRegularTime) || getGlobalDiscountRate() > 0;
 }
 
 function isHappyHourActive() {
+  if (!REGULAR_HAPPY_HOUR_ACTIVE) return false;
+  
   const now = getBerlinDateParts();
-  return now.weekday === 6 && now.hour >= 10; // Wieder auf 10 Uhr geändert
+  return now.weekday === 6 && now.hour >= 10;
 }
 
 function isCocktailOfTheEveningActive() {
+  if (!REGULAR_HAPPY_HOUR_ACTIVE) return false;
+
   const now = getBerlinDateParts();
   return (
-    (now.weekday === 6 && now.hour >= 10) || // Wieder auf 10 Uhr geändert
+    (now.weekday === 6 && now.hour >= 10) ||
     (now.weekday === 0 && now.hour < 10)
   );
 }
-
-
-
 
 function updateSpecialButtonVisibility() {
   const button = document.getElementById("special-button");
@@ -236,6 +251,7 @@ function applyWeeklySpecials(cards) {
 
   const globalDiscount = getGlobalDiscountRate();
 
+  // Rabatte (20-22 Uhr)
   if (globalDiscount > 0) {
     cards.forEach((card) => {
       const priceEl = card.querySelector(".price");
@@ -255,6 +271,7 @@ function applyWeeklySpecials(cards) {
     return;
   }
 
+  // Normale Specials
   const plan = getCurrentWeekPlan();
 
   if (plan) {
