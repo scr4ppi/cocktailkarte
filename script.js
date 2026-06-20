@@ -1,4 +1,3 @@
-
 const TIMEZONE = "Europe/Berlin";
 const ROTATION_START = "2026-06-20";
 
@@ -367,3 +366,217 @@ function drawPolygon(ctx, centerX, centerY, radius, sides, fill) {
     } else {
       ctx.lineTo(x, y);
     }
+  }
+  ctx.closePath();
+
+  if (fill) {
+    ctx.fill();
+  } else {
+    ctx.stroke();
+  }
+}
+
+function drawRadar(radarCanvas, tasteInputs) {
+  if (!radarCanvas) return;
+
+  const ctx = radarCanvas.getContext("2d");
+  const wanted = getWantedProfile(tasteInputs);
+
+  const width = radarCanvas.width;
+  const height = radarCanvas.height;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const maxRadius = 95;
+
+  ctx.clearRect(0, 0, width, height);
+
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = "rgba(255, 255, 255, 0.16)";
+  ctx.fillStyle = "rgba(255, 255, 255, 0.62)";
+  ctx.font = "11px Arial";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  for (let level = 1; level <= 5; level++) {
+    const radius = (maxRadius / 5) * level;
+    drawPolygon(ctx, centerX, centerY, radius, tasteLabels.length, false);
+  }
+
+  tasteLabels.forEach((item, index) => {
+    const angle = getAngle(index, tasteLabels.length);
+    const x = centerX + Math.cos(angle) * (maxRadius + 24);
+    const y = centerY + Math.sin(angle) * (maxRadius + 24);
+
+    ctx.beginPath();
+    ctx.moveTo(centerX, centerY);
+    ctx.lineTo(centerX + Math.cos(angle) * maxRadius, centerY + Math.sin(angle) * maxRadius);
+    ctx.stroke();
+
+    ctx.fillText(item.label, x, y);
+  });
+
+  ctx.beginPath();
+  tasteLabels.forEach((item, index) => {
+    const value = wanted[item.key];
+    const radius = (maxRadius / 5) * value;
+    const angle = getAngle(index, tasteLabels.length);
+    const x = centerX + Math.cos(angle) * radius;
+    const y = centerY + Math.sin(angle) * radius;
+
+    if (index === 0) {
+      ctx.moveTo(x, y);
+    } else {
+      ctx.lineTo(x, y);
+    }
+  });
+  ctx.closePath();
+  ctx.fillStyle = "rgba(255, 51, 51, 0.32)";
+  ctx.fill();
+
+  ctx.lineWidth = 3;
+  ctx.strokeStyle = "rgba(255, 51, 51, 0.95)";
+  ctx.stroke();
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".card");
+  const categoryBtns = document.querySelectorAll(".category-btn");
+
+  const openDrinkFinderBtn = document.getElementById("openDrinkFinder");
+  const closeDrinkFinderBtn = document.getElementById("closeDrinkFinder");
+  const drinkFinderModal = document.getElementById("drinkFinderModal");
+  const tasteInputs = document.querySelectorAll("[data-taste]");
+  const finderResults = document.getElementById("finderResults");
+  const radarCanvas = document.getElementById("tasteRadar");
+
+  function closeDrinkFinder() {
+    if (!drinkFinderModal) return;
+    drinkFinderModal.classList.remove("show");
+    drinkFinderModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  function renderFinderResults() {
+    if (!finderResults) return;
+
+    const matches = getSortedMatches(tasteInputs);
+
+    finderResults.innerHTML = matches
+      .map((drink) => `
+        <button class="finder-result" type="button" data-target-drink="${drink.id}">
+          <strong>${drink.name} <span class="finder-match">${drink.match}%</span></strong>
+          <span>${drink.note}</span>
+        </button>
+      `)
+      .join("");
+
+    document.querySelectorAll("[data-target-drink]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const drinkId = button.dataset.targetDrink;
+        const card = document.querySelector(`[data-drink-id="${drinkId}"]`);
+
+        if (!card) {
+          alert("Dieser Cocktail ist aktuell nicht als Karte auf der Seite vorhanden.");
+          return;
+        }
+
+        closeDrinkFinder();
+        cards.forEach((c) => c.classList.remove("open"));
+
+        setTimeout(() => {
+          card.scrollIntoView({ behavior: "smooth", block: "center" });
+          card.classList.add("open");
+          const toggle = card.querySelector(".card-toggle");
+          if (toggle) {
+            toggle.setAttribute("aria-expanded", "true");
+          }
+        }, 120);
+      });
+    });
+  }
+
+  function updateDrinkFinder() {
+    drawRadar(radarCanvas, tasteInputs);
+    renderFinderResults();
+  }
+
+  function openDrinkFinder() {
+    if (!drinkFinderModal) return;
+    drinkFinderModal.classList.add("show");
+    drinkFinderModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    updateDrinkFinder();
+  }
+
+  document.querySelectorAll(".card-image").forEach((img) => {
+    if (img.complete) {
+      img.classList.add("loaded");
+    } else {
+      img.addEventListener("load", () => {
+        img.classList.add("loaded");
+      });
+    }
+  });
+
+  applyWeeklySpecials(cards);
+  updateSpecialButtonVisibility();
+  applyCurrentFilter(cards);
+
+  cards.forEach((card) => {
+    const button = card.querySelector(".card-toggle");
+    if (!button) return;
+
+    button.addEventListener("click", () => {
+      const wasOpen = card.classList.contains("open");
+      const drinkTitle = card.querySelector(".card-title")?.innerText || "Unbekannt";
+
+      cards.forEach((c) => c.classList.remove("open"));
+
+      if (!wasOpen) {
+        card.classList.add("open");
+        if (typeof gtag === "function") {
+          gtag("event", "view_drink_details", { drink_name: drinkTitle });
+        }
+      }
+    });
+  });
+
+  categoryBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const categoryName = btn.innerText || btn.dataset.category;
+      categoryBtns.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      applyCurrentFilter(cards);
+
+      if (typeof gtag === "function") {
+        gtag("event", "select_category", { category_id: categoryName.trim() });
+      }
+    });
+  });
+
+  if (openDrinkFinderBtn) openDrinkFinderBtn.addEventListener("click", openDrinkFinder);
+  if (closeDrinkFinderBtn) closeDrinkFinderBtn.addEventListener("click", closeDrinkFinder);
+
+  if (drinkFinderModal) {
+    drinkFinderModal.addEventListener("click", (event) => {
+      if (event.target === drinkFinderModal) closeDrinkFinder();
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeDrinkFinder();
+  });
+
+  tasteInputs.forEach((input) => {
+    input.addEventListener("input", updateDrinkFinder);
+  });
+
+  updateDrinkFinder();
+
+  setInterval(() => {
+    applyWeeklySpecials(cards);
+    updateSpecialButtonVisibility();
+    applyCurrentFilter(cards);
+  }, 60000);
+});
