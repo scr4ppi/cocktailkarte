@@ -11,7 +11,7 @@ const PERCENTAGE_DISCOUNT_ACTIVE = false;
 // SCHALTER 2: Normale Happy Hour & Cocktail des Abends
 // true = Läuft ganz normal ab 10 Uhr
 // false = KOMPLETT ABGESAGT (Button verschwindet, normale Preise)
-const REGULAR_HAPPY_HOUR_ACTIVE = false; 
+const REGULAR_HAPPY_HOUR_ACTIVE = true; 
 
 // --------------------------------
 
