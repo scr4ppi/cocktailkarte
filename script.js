@@ -29,7 +29,7 @@ const FOUR_WEEK_SPECIALS = [
   "happyHourAlcoholic": [
     "tequila-sunrise",
     "pina-colada",
-    "bahama-mama"
+    "sex-on-the-beach"
   ],
   "happyHourVirgin": "maracuja-mule",
   "cocktailOfTheEvening": "gin-fizz"
